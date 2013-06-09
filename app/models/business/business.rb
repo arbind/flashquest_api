@@ -3,6 +3,15 @@ class Business
   include Mongoid::Timestamps
 
   field :name, type: String
+  field :type, type: String
+  field :address, type: String
+  field :address2, type: String
+  field :city, type: String
+  field :state, type: String
+  field :zip, type: Integer
+  field :neighborhood, type: String
+  field :phone, type: String
+  field :url, type: String
 
   embeds_many :business_quests
   embeds_many :business_rewards
