@@ -1,3 +1,8 @@
+###
+# Heroku initialization - use:
+# > heroku run rake db:seed
+# > heroku run rake db:purge
+###
 production:
   # Configure available database sessions. (required)
   sessions:
