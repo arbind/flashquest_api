@@ -1,4 +1,13 @@
 FlashquestApi::Application.routes.draw do
+
+  get "home/index"
+
+  resources :businesses
+
+  get "/businesses/:id/activity(.:format)" => "businesses#activity"
+  get "/businesses/:id/reviews(.:format)" => "businesses#reviews"
+  get "/businesses/:id/rewards(.:format)" => "businesses#rewards"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
