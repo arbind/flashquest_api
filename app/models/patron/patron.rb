@@ -9,11 +9,14 @@ class Patron
   belongs_to :branch
 
   has_many :quests
-  has_many :reviews
   has_many :rewards
 
   def start_quest(quest_description)
     quests.create({ quest_description_id: quest_description.id})
+  end
+
+  def redeem_reward(reward_description)
+    rewards.create({ reward_description_id: reward_description.id})
   end
 
 end

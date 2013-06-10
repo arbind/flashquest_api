@@ -78,16 +78,20 @@ business = Business.create({
   person = Person.create
   patron = branch.make_customer(person)
   patron.start_quest(branch.quest_descriptions.first)
+  patron.redeem_reward(branch.reward_descriptions.first)
 
   person = Person.create
   patron = branch.make_customer(person)
   patron.start_quest(branch.quest_descriptions.second)
+  patron.redeem_reward(branch.reward_descriptions.first)
 
   person = Person.create
   patron = branch.make_customer(person)
   patron.start_quest(branch.quest_descriptions.third)
+  patron.redeem_reward(branch.reward_descriptions.last)
 
   person = Person.create
   patron = branch.make_customer(person)
   patron.start_quest(branch.quest_descriptions.last)
+  patron.redeem_reward(branch.reward_descriptions.last)
 end

@@ -1,0 +1,1 @@
+json.partial! '1/patron', patron: @patron

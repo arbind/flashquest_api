@@ -2,16 +2,30 @@ FlashquestApi::Application.routes.draw do
 
   get "home/index"
 
-  resources :businesses
+  resources :businesses, only: [:index, :show] do
+    resources :branches, only: [:index]
+  end
 
+  resources :people, only: [:show]
+
+  resources :branches, only: [:show] do
+    resources :patrons, only: [:index]
+    resources :quests, only: [:index]
+    resources :rewards, only: [:index]
+  end
+
+  resources :patrons, only: [:show]
+
+  resources :quests, only: [:show]
+  resources :rewards, only: [:show]
+
+  get "/businesses/:id/branches(.:format)" => "businesses#branches"
 
   get "/businesses/:id/quests(.:format)" => "businesses#quests"
   get "/businesses/:id/rewards(.:format)" => "businesses#rewards"
   get "/businesses/:id/reviews(.:format)" => "businesses#reviews"
   get "/businesses/:id/photos(.:format)" => "businesses#photos"
   get "/businesses/:id/activity(.:format)" => "businesses#activity"
-
-  get "/businesses/:id/branches(.:format)" => "businesses#branches"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

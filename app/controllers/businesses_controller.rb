@@ -12,11 +12,6 @@ class BusinessesController < ApplicationController
   def show
   end
 
-  # GET /businesses/1/branches
-  # GET /businesses/1/branches.json
-  def branches
-  end
-
   # GET /businesses/1/quests
   # GET /businesses/1/quests.json
   def quests
