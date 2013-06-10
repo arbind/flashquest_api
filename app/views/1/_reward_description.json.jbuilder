@@ -1,0 +1,1 @@
+json.extract! reward_description, :active, :title, :description, :points_required

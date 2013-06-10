@@ -5,6 +5,7 @@ class Branch
   field :name, type: String
   field :type, type: String
   field :url, type: String
+  field :phone, type: String
 
   field :address, type: String
   field :address2, type: String
@@ -12,7 +13,6 @@ class Branch
   field :state, type: String
   field :zip, type: Integer
   field :neighborhood, type: String
-  field :phone, type: String
 
   embeds_many :quest_descriptions
   embeds_many :reward_descriptions

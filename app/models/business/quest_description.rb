@@ -4,13 +4,13 @@ class QuestDescription
 
   field :active, type: Boolean
   field :type, type: Symbol, default: :quest
-  field :instructions, type: String
-  field :acceptance_criteria, type: String
+  field :name, type: String
+  field :description, type: String
   field :points, type: Integer, default: 1
-  field :points_for_sharing, type: Integer, default: 1
-  field :checkin_is_required, type: Boolean, default: true
-  field :must_do_at_location, type: Boolean, default: false
-  field :number_of_approvals_required, type: Integer, default: 1
+  field :bonus_approval_points, type: Integer, default: 1
+  field :bonus_sharing_points, type: Integer, default: 1
+  field :approvals_required_for_points, type: Integer, default: 1
+  field :approvals_required_for_bonus, type: Integer, default: 1
 
   embedded_in :branch
 

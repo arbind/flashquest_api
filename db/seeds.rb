@@ -8,8 +8,10 @@ business = Business.create({
   type: 'Cafe',
   url: 'http://www.bobabear.com'
 })
-[1,2,3].each do 
-  branch = business.branches.create({
+
+branches = [
+  {
+    name: 'Boba Bear',
     address: '414 S Western Ave', 
     address2: 'Ste C', 
     city: 'Los Angeles', 
@@ -17,50 +19,74 @@ business = Business.create({
     zip: 90020, 
     neighborhood: 'Koreatown', 
     phone: '(213) 908-5595' 
-  })
+  },
+  {
+    name: 'Boba Bear 2',
+    address: '414 S Western Ave', 
+    address2: 'Ste C', 
+    city: 'Los Angeles', 
+    state: 'CA', 
+    zip: 90020, 
+    neighborhood: 'Koreatown', 
+    phone: '(213) 908-5595' 
+  },
+  {
+    name: 'Boba Bear X',
+    address: '414 S Western Ave', 
+    address2: 'Ste C', 
+    city: 'Los Angeles', 
+    state: 'CA', 
+    zip: 90020, 
+    neighborhood: 'Koreatown', 
+    phone: '(213) 908-5595' 
+  }  
+
+]
+branches.each do | branch_info |
+  branch = business.branches.create(branch_info)
   branch.quest_descriptions.create({
     active: true,
     type: :facebook_like,
-    instructions: '',
-    acceptance_criteria: '',
+    name: 'Like us on Facebook.',
+    description: nil,
     points: 100,
-    points_for_sharing: 0,
-    checkin_is_required: false,
-    must_do_at_location: false,
-    number_of_approvals_required: 0,
+    bonus_approval_points: 100,
+    bonus_sharing_points: 50,
+    approvals_required_for_points: 1,
+    approvals_required_for_bonus: 5,
   })
   branch.quest_descriptions.create({
     active: true,
     type: :twitter_follow,
-    instructions: '',
-    acceptance_criteria: '',
+    name: 'Follow us on Twitter.',
+    description: nil,
     points: 100,
-    points_for_sharing: 0,
-    checkin_is_required: false,
-    must_do_at_location: false,
-    number_of_approvals_required: 0,
+    bonus_approval_points: 100,
+    bonus_sharing_points: 50,
+    approvals_required_for_points: 1,
+    approvals_required_for_bonus: 5,
   })
   branch.quest_descriptions.create({
     active: true,
     type: :review,
-    instructions: '',
-    acceptance_criteria: '',
-    points: 200,
-    points_for_sharing: 100,
-    checkin_is_required: false,
-    must_do_at_location: false,
-    number_of_approvals_required: 1,
+    name: 'Write up a review.',
+    description: nil,
+    points: 100,
+    bonus_approval_points: 100,
+    bonus_sharing_points: 50,
+    approvals_required_for_points: 1,
+    approvals_required_for_bonus: 5,
   })
   branch.quest_descriptions.create({
     active: true,
     type: :photo,
-    instructions: '',
-    acceptance_criteria: '',
-    points: 200,
-    points_for_sharing: 100,
-    checkin_is_required: false,
-    must_do_at_location: false,
-    number_of_approvals_required: 1,
+    name: 'Snap a picture of a menu item',
+    description: nil,
+    points: 100,
+    bonus_approval_points: 100,
+    bonus_sharing_points: 50,
+    approvals_required_for_points: 1,
+    approvals_required_for_bonus: 5,
   })
   branch.reward_descriptions.create({
     active: true,
