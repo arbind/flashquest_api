@@ -12,6 +12,10 @@ class Person
   def reviews() Review.where :patron_id.in => patron_ids end
   def rewards() Reward.where :patron_id.in => patron_ids end
 
+  def patronize(branch)
+    patron = patrons.find_or_create_by(branch_id: branch.id)
+  end
+  
   private
     def patron_ids() self.patrons.map { |p| p.id } end  
 

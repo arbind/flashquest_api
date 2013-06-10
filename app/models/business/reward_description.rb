@@ -1,4 +1,4 @@
-class BusinessReward
+class RewardDescription
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -7,5 +7,5 @@ class BusinessReward
   field :description, type: String
   field :points_required, type: Integer, default: 88888888
   
-  embedded_in :business
+  embedded_in :branch
 end

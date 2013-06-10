@@ -6,9 +6,14 @@ class Patron
   field :level, type: Integer, default: 1
 
   belongs_to :person
-  belongs_to :business
+  belongs_to :branch
 
   has_many :quests
   has_many :reviews
   has_many :rewards
+
+  def start_quest(quest_description)
+    quests.create({ quest_description_id: quest_description.id})
+  end
+
 end
