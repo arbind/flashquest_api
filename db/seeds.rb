@@ -3,19 +3,22 @@
 #
 # Examples:
 #
-  business = Business.create({
-    name: 'Boba Bear',
-    type: 'Cafe',
-    address: '414 S Western Ave',
-    address2: 'Ste C',
-    city: 'Los Angeles',
-    state: 'CA',
-    zip: 90020,
-    neighborhood: 'Koreatown',
-    phone: '(213) 908-5595',
-    url: 'http://www.bobabear.com'
+business = Business.create({
+  name: 'Boba Bear',
+  type: 'Cafe',
+  url: 'http://www.bobabear.com'
+})
+[1,2,3].each do 
+  branch = business.branches.create({
+    address: '414 S Western Ave', 
+    address2: 'Ste C', 
+    city: 'Los Angeles', 
+    state: 'CA', 
+    zip: 90020, 
+    neighborhood: 'Koreatown', 
+    phone: '(213) 908-5595' 
   })
-  business.business_quests.create({
+  branch.quest_descriptions.create({
     active: true,
     type: :facebook_like,
     instructions: '',
@@ -26,7 +29,7 @@
     must_do_at_location: false,
     number_of_approvals_required: 0,
   })
-  business.business_quests.create({
+  branch.quest_descriptions.create({
     active: true,
     type: :twitter_follow,
     instructions: '',
@@ -37,7 +40,7 @@
     must_do_at_location: false,
     number_of_approvals_required: 0,
   })
-  business.business_quests.create({
+  branch.quest_descriptions.create({
     active: true,
     type: :review,
     instructions: '',
@@ -48,7 +51,7 @@
     must_do_at_location: false,
     number_of_approvals_required: 1,
   })
-  business.business_quests.create({
+  branch.quest_descriptions.create({
     active: true,
     type: :photo,
     instructions: '',
@@ -59,15 +62,32 @@
     must_do_at_location: false,
     number_of_approvals_required: 1,
   })
-  business.business_rewards.create({
+  branch.reward_descriptions.create({
     active: true,
     title: 'Free drink',
     description: '',
     points_required: 500
   })
-  business.business_rewards.create({
+  branch.reward_descriptions.create({
     active: true,
     title: '50% off',
     description: '',
     points_required: 1000
   })
+
+  person = Person.create
+  patron = branch.make_customer(person)
+  patron.start_quest(branch.quest_descriptions.first)
+
+  person = Person.create
+  patron = branch.make_customer(person)
+  patron.start_quest(branch.quest_descriptions.second)
+
+  person = Person.create
+  patron = branch.make_customer(person)
+  patron.start_quest(branch.quest_descriptions.third)
+
+  person = Person.create
+  patron = branch.make_customer(person)
+  patron.start_quest(branch.quest_descriptions.last)
+end

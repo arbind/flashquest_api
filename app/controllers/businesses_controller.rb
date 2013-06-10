@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-  before_action :set_business, only: [:show, :reviews, :quests, :rewards, :activity, :edit, :update, :destroy]
+  before_action :set_business, only: [:branches, :quests, :rewards, :photos, :reviews, :activity, :show, :edit, :update, :destroy]
 
   # GET /businesses
   # GET /businesses.json
@@ -12,14 +12,29 @@ class BusinessesController < ApplicationController
   def show
   end
 
-  # GET /businesses/1/reviews
-  # GET /businesses/1/reviews.json
-  def reviews
+  # GET /businesses/1/branches
+  # GET /businesses/1/branches.json
+  def branches
+  end
+
+  # GET /businesses/1/quests
+  # GET /businesses/1/quests.json
+  def quests
   end
 
   # GET /businesses/1/rewards
   # GET /businesses/1/rewards.json
   def rewards
+  end
+
+  # GET /businesses/1/photos
+  # GET /businesses/1/photos.json
+  def photos
+  end
+
+  # GET /businesses/1/reviews
+  # GET /businesses/1/reviews.json
+  def reviews
   end
 
   # GET /businesses/1/activity
