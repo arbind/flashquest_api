@@ -2,30 +2,30 @@ FlashquestApi::Application.routes.draw do
 
   get "home/index"
 
-  resources :businesses, only: [:index, :show] do
-    resources :branches, only: [:index]
+  resources :businesses, only: [:index, :show], :defaults => { :format => 'json' } do
+    resources :branches, only: [:index], :defaults => { :format => 'json' }
   end
 
-  resources :people, only: [:show]
+  resources :people, only: [:show], :defaults => { :format => 'json' }
 
-  resources :branches, only: [:show] do
-    resources :patrons, only: [:index]
-    resources :quests, only: [:index]
-    resources :rewards, only: [:index]
+  resources :branches, only: [:show], :defaults => { :format => 'json' } do
+    resources :patrons, only: [:index], :defaults => { :format => 'json' }
+    resources :quests, only: [:index], :defaults => { :format => 'json' }
+    resources :rewards, only: [:index], :defaults => { :format => 'json' }
   end
 
-  resources :patrons, only: [:show]
+  resources :patrons, only: [:show], :defaults => { :format => 'json' }
 
-  resources :quests, only: [:show]
-  resources :rewards, only: [:show]
+  resources :quests, only: [:show], :defaults => { :format => 'json' }
+  resources :rewards, only: [:show], :defaults => { :format => 'json' }
 
-  get "/businesses/:id/branches(.:format)" => "businesses#branches"
+  get "/businesses/:id/branches(.:format)" => "businesses#branches", :defaults => { :format => 'json' }
 
-  get "/businesses/:id/quests(.:format)" => "businesses#quests"
-  get "/businesses/:id/rewards(.:format)" => "businesses#rewards"
-  get "/businesses/:id/reviews(.:format)" => "businesses#reviews"
-  get "/businesses/:id/photos(.:format)" => "businesses#photos"
-  get "/businesses/:id/activity(.:format)" => "businesses#activity"
+  get "/businesses/:id/quests(.:format)" => "businesses#quests", :defaults => { :format => 'json' }
+  get "/businesses/:id/rewards(.:format)" => "businesses#rewards", :defaults => { :format => 'json' }
+  get "/businesses/:id/reviews(.:format)" => "businesses#reviews", :defaults => { :format => 'json' }
+  get "/businesses/:id/photos(.:format)" => "businesses#photos", :defaults => { :format => 'json' }
+  get "/businesses/:id/activity(.:format)" => "businesses#activity", :defaults => { :format => 'json' }
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

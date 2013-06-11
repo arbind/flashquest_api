@@ -3,60 +3,60 @@
 
 ### Businesses API Endpoints
 ````
-GET /businesses.json
-GET /businesses/:id.json
-GET /businesses/:id/patrons.json
-GET /businesses/:id/quests.json?type=:quest_type
-GET /businesses/:id/photos.json
-GET /businesses/:id/reviews.json
-GET /businesses/:id/rewards.json
-GET /businesses/:id/branches.json
+GET /businesses
+GET /businesses/:id
+GET /businesses/:id/patrons
+GET /businesses/:id/quests?type=:quest_type
+GET /businesses/:id/photos
+GET /businesses/:id/reviews
+GET /businesses/:id/rewards
+GET /businesses/:id/branches
 ````
 
 ### Branches API Endpoints
 ````
-GET /branches/:id.json
-GET /branches/:id/patrons.json
-GET /branches/:id/quests.json?type=:quest_type
-GET /branches/:id/photos.json
-GET /branches/:id/reviews.json
-GET /branches/:id/rewards.json
+GET /branches/:id
+GET /branches/:id/patrons
+GET /branches/:id/quests?type=:quest_type
+GET /branches/:id/photos
+GET /branches/:id/reviews
+GET /branches/:id/rewards
 ````
 
 ### Patrons API Endpoints
 ````
-GET /patrons/:id.json
-GET /patrons/:id/quests.json?type=:quest_type
-GET /patrons/:id/photos.json
-GET /patrons/:id/reviews.json
-GET /patrons/:id/rewards.json
+GET /patrons/:id
+GET /patrons/:id/quests?type=:quest_type
+GET /patrons/:id/photos
+GET /patrons/:id/reviews
+GET /patrons/:id/rewards
 ````
 
 ### Quests API Endpoints
 ````
-GET /quests/:id.json
+GET /quests/:id
 ````
 
 ### Photos API Endpoints
 ````
-GET /photos/:id.json
+GET /photos/:id
 ````
 
 ### Reviews API Endpoints
 ````
-GET /reviews/:id.json
+GET /reviews/:id
 ````
 
 ### Rewards API Endpoints
 ````
-GET /rewards/:id.json
+GET /rewards/:id
 ````
 
 ## Start Server:
 ````
 bundle
 rails s
-open http://localhost:3000/businesses.json
+open http://localhost:3000/businesses
 ````
 ## Execute Specs:
 ````
