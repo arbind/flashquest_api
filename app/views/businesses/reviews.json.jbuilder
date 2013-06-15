@@ -1,1 +1,0 @@
-json.partial! '1/reviews', items: @business.reviews

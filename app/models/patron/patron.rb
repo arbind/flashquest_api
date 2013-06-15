@@ -12,7 +12,7 @@ class Patron
   has_many :rewards
 
   def start_quest(quest_description)
-    quests.create({ quest_description_id: quest_description.id})
+    self.quests.create({ quest_description_id: quest_description.id, type: quest_description.type})
   end
 
   def redeem_reward(reward_description)

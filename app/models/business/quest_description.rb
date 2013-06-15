@@ -22,6 +22,7 @@ class QuestDescription
 
   def start(person)
     patron = person.patrons.where(branch_id: self.branch.id)
-    puts patron
+    patron = person.patronize(branch) if patron.nil?
+    patron.start_quest(self)
   end
 end

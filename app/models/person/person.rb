@@ -13,10 +13,9 @@ class Person
   def rewards() Reward.where :patron_id.in => patron_ids end
 
   def patronize(branch)
-    patron = patrons.find_or_create_by(branch_id: branch.id)
+    self.patrons.where(branch_id: branch.id).first_or_create!
   end
   
   private
-    def patron_ids() self.patrons.map { |p| p.id } end  
-
+    def patron_ids() self.patrons.map { |p| p.id } end
 end

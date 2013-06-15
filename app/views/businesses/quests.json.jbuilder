@@ -1,1 +1,1 @@
-json.partial! '1/quests', items: @business.quests
+json.partial! '1/quests', items: @quests

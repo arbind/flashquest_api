@@ -1,0 +1,1 @@
+json.partial! '1/person', person: @person

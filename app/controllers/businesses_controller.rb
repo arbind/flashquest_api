@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-  before_action :set_business, only: [:branches, :quests, :rewards, :photos, :reviews, :activity, :show, :edit, :update, :destroy]
+  before_action :set_business, only: [:patrons, :branches, :quests, :rewards, :photo_quests, :review_quests, :activity, :show, :edit, :update, :destroy]
 
   # GET /businesses
   # GET /businesses.json
@@ -12,24 +12,35 @@ class BusinessesController < ApplicationController
   def show
   end
 
+  # GET /businesses/1/patrons
+  # GET /businesses/1/patrons.json
+  def patrons
+  end
+
   # GET /businesses/1/quests
   # GET /businesses/1/quests.json
   def quests
+    @quests = @business.quests
+    @quests = @quests.where(type: params[:type].to_sym) if params[:type]
+  end
+
+  # GET /businesses/1/photo_quests
+  # GET /businesses/1/photo_quests.json
+  def photo_quests
+    @quests = @business.quests.where(type: :photo)
+    render :quests
+  end
+
+  # GET /businesses/1/review_quests
+  # GET /businesses/1/review_quests.json
+  def review_quests
+    @quests = @business.quests.where(type: :review)
+    render :quests
   end
 
   # GET /businesses/1/rewards
   # GET /businesses/1/rewards.json
   def rewards
-  end
-
-  # GET /businesses/1/photos
-  # GET /businesses/1/photos.json
-  def photos
-  end
-
-  # GET /businesses/1/reviews
-  # GET /businesses/1/reviews.json
-  def reviews
   end
 
   # GET /businesses/1/activity
