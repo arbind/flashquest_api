@@ -1,22 +1,21 @@
 class BranchesController < ApplicationController
-  before_action :set_business, only: [:index]
-  before_action :set_branch, only: [:show]
+  before_action :set_branches, only: [:index]
+  before_action :set_branch,   only: [:show]
 
+  # GET /branches
   # GET /businesses/1/branches
-  # GET /businesses/1/branches.json
   def index
-    @branches = @business.branches
   end
 
-  # GET /businesses/1/branches/1
-  # GET /businesses/1/branches/1.json
+  # GET /branches/1
   def show
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_business
-      @business = Business.find(params[:business_id])
+    def set_branches
+      @context = @business = Business.find(params[:business_id]) if params[:business_id]
+      @branches  = @context.branches if @context
+      @branches ||= Branch.all
     end
 
     def set_branch

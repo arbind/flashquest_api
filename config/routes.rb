@@ -2,76 +2,56 @@ FlashquestApi::Application.routes.draw do
 
   get "home/index"
 
-  resources :businesses, only: [:index, :show], :defaults => { :format => 'json' } do
-    resources :branches, only: [:index], :defaults => { :format => 'json' }
+  resources :businesses,      only: [:index, :show], defaults: { format: 'json' } do
+    resources :branches,      only: [:index], defaults: { format: 'json' }
+    resources :patrons,       only: [:index], defaults: { format: 'json' }
+    resources :people,        only: [:index], defaults: { format: 'json' }
+    resources :activity,      only: [:index], defaults: { format: 'json' }
+    resources :quests,        only: [:index], defaults: { format: 'json' }
+    resources :photoquests,   only: [:index], controller: :quests, defaults: { format: 'json', type: 'photo' }
+    resources :commentquests, only: [:index], controller: :quests, defaults: { format: 'json', type: 'comment' }
+    resources :rewards,       only: [:index], defaults: { format: 'json' }
   end
 
-  resources :people, only: [:show], :defaults => { :format => 'json' }
-
-  resources :branches, only: [:show], :defaults => { :format => 'json' } do
-    resources :patrons, only: [:index], :defaults => { :format => 'json' }
-    resources :quests, only: [:index], :defaults => { :format => 'json' }
-    resources :rewards, only: [:index], :defaults => { :format => 'json' }
+  resources :people, only: [:index, :show], defaults: { format: 'json' } do
+    resources :feed,          only: [:index], defaults: { format: 'json' }
+    resources :activity,      only: [:index], defaults: { format: 'json' }
+    resources :branches,      only: [:index, :show], defaults: { format: 'json' }
+    resources :businesses,    only: [:index], defaults: { format: 'json' }
+    resources :quests,        only: [:index], defaults: { format: 'json' }
+    resources :photoquests,   only: [:index], controller: :quests, defaults: { format: 'json', type: 'photo' }
+    resources :commentquests, only: [:index], controller: :quests, defaults: { format: 'json', type: 'comment' }
+    resources :approvals,     only: [:index], defaults: { format: 'json' }
+    resources :comments,      only: [:index], defaults: { format: 'json' }
+    resources :rewards,       only: [:index], defaults: { format: 'json' }
   end
 
-  resources :patrons, only: [:show], :defaults => { :format => 'json' }
+  resources :branches,        only: [:index, :show], defaults: { format: 'json' } do
+    resources :patrons,       only: [:index], defaults: { format: 'json' }
+    resources :people,        only: [:index], defaults: { format: 'json' }
+    resources :activity,      only: [:index], defaults: { format: 'json' }
+    resources :quests,        only: [:index], defaults: { format: 'json' }
+    resources :photoquests,   only: [:index], controller: :quests, defaults: { format: 'json', type: 'photo' }
+    resources :commentquests, only: [:index], controller: :quests, defaults: { format: 'json', type: 'comment' }
+    resources :approvals,     only: [:index], defaults: { format: 'json' }
+    resources :comments,      only: [:index], defaults: { format: 'json' }
+    resources :rewards,       only: [:index], defaults: { format: 'json' }
+  end
 
-  resources :quests, only: [:show], :defaults => { :format => 'json' }
-  resources :rewards, only: [:show], :defaults => { :format => 'json' }
+  resources :patrons,         only: [:index, :show], defaults: { format: 'json' } do
+    resources :activity,      only: [:index], defaults: { format: 'json' }
+    resources :quests,        only: [:index], defaults: { format: 'json' }
+    resources :photoquests,   only: [:index], controller: :quests, defaults: { format: 'json', type: 'photo' }
+    resources :commentquests, only: [:index], controller: :quests, defaults: { format: 'json', type: 'comment' }
+    resources :approvals,     only: [:index], defaults: { format: 'json' }
+    resources :comments,      only: [:index], defaults: { format: 'json' }
+    resources :rewards,       only: [:index], defaults: { format: 'json' }
+  end
 
-  get "/businesses/:id/branches(.:format)"  => "businesses#branches", :defaults => { :format => 'json' }
-  get "/businesses/:id/patrons(.:format)"   => "businesses#patrons",  :defaults => { :format => 'json' }
-  get "/businesses/:id/quests(.:format)"    => "businesses#quests",   :defaults => { :format => 'json' }
-  get "/businesses/:id/photo-quests(.:format)"    => "businesses#photo_quests",   :defaults => { :format => 'json' }
-  get "/businesses/:id/review-quests(.:format)"   => "businesses#review_quests",  :defaults => { :format => 'json' }
-  get "/businesses/:id/rewards(.:format)"   => "businesses#rewards",  :defaults => { :format => 'json' }
-  get "/businesses/:id/activity(.:format)"  => "businesses#activity", :defaults => { :format => 'json' }
+  resources :quests, only: [:index, :show], defaults: { format: 'json' } do
+    resources :approvals,     only: [:index], defaults: { format: 'json' }
+    resources :comments,      only: [:index], defaults: { format: 'json' }
+  end
 
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  resources :rewards, only: [:index, :show], defaults: { format: 'json' }
 end

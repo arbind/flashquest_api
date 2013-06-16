@@ -7,3 +7,5 @@ reward_description = branch.reward_descriptions.find(reward.reward_description_i
 json.extract! reward_description, :title, :description
 
 json.points reward_description.points_required
+
+json.extract! reward, :created_at, :updated_at

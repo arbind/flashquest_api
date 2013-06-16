@@ -68,7 +68,7 @@ branches.each do | branch_info |
   })
   branch.quest_descriptions.create({
     active: true,
-    type: :review,
+    type: :comment,
     name: 'Write up a review.',
     description: nil,
     points: 100,

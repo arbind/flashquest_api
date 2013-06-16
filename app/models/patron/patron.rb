@@ -2,9 +2,6 @@ class Patron
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :points, type: Integer
-  field :level, type: Integer, default: 1
-
   belongs_to :person
   belongs_to :branch
 

@@ -1,13 +1,28 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show]
+  before_action :set_people, only: [:index]
+
+  # GET /people
+  # GET /branches/1/people.json
+  # GET /businesses/1/people.json
+  def index
+    render :index if @people
+    render :index_for_patrons if @patrons
+  end
 
   # GET /people/1
-  # GET /people/1.json
   def show
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    def set_people
+      @context = @business = Business.find(params[:business_id]) if params[:business_id]
+      @context = @branch   = Branch.find(params[:branch_id]) if params[:branch_id]
+      @people  = @context.people if @context and @context.respond_to? :people
+      @patrons = @context.patrons if @people.nil? and @context.respond_to? :patrons
+      @people ||= Person.all
+    end
+
     def set_person
       @person = Person.find(params[:id])
     end

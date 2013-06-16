@@ -1,11 +1,12 @@
 class PatronsController < ApplicationController
-  before_action :set_branch, only: [:index]
-  before_action :set_patron, only: [:show]
+  before_action :set_patron,  only: [:show]
+  before_action :set_patrons, only: [:index]
 
-  # GET /businesses/1/branches/1/patrons
-  # GET /businesses/1/branches/1/patrons.json
+  # GET /patrons
+  # GET /people/1/patrons.json
+  # GET /branches/1/patrons.json
+  # GET /businesses/1/patrons.json
   def index
-    @patrons = @branch.patrons
   end
 
   # GET /patrons/1
@@ -14,9 +15,12 @@ class PatronsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_branch
-      @branch = Branch.find(params[:branch_id])
+    def set_patrons
+      @context = @business = Business.find(params[:business_id]) if params[:business_id]
+      @context = @branch   = Branch.find(params[:branch_id]) if params[:branch_id]
+      @context = @person   = Patron.find(params[:person_id]) if params[:person_id]
+      @patrons  = @context.patrons if @context
+      @patrons ||= Patron.all
     end
 
     def set_patron
