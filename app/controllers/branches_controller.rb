@@ -3,6 +3,7 @@ class BranchesController < ApplicationController
   before_action :set_branch,   only: [:show]
 
   # GET /branches
+  # GET /people/1/branches
   # GET /businesses/1/branches
   def index
   end
@@ -14,6 +15,7 @@ class BranchesController < ApplicationController
   private
     def set_branches
       @context = @business = Business.find(params[:business_id]) if params[:business_id]
+      @context = @person   = Person.find(params[:person_id]) if params[:person_id]
       @branches  = @context.branches if @context
       @branches ||= Branch.all
     end

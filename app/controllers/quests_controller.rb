@@ -3,8 +3,9 @@ class QuestsController < ApplicationController
   before_action :set_quests, only: [:index]
 
   # GET /quests
+  # GET /people/1/quests
+  # GET /patrons/1/quests
   # GET /branches/1/quests
-  # GET /patron/1/quests
   # GET /businesses/1/quests
   def index
   end
@@ -13,12 +14,12 @@ class QuestsController < ApplicationController
   def show
   end
 
-
   private
     def set_quests
       @context = @business = Business.find(params[:business_id]) if params[:business_id]
       @context = @branch   = Branch.find(params[:branch_id]) if params[:branch_id]
       @context = @patron   = Patron.find(params[:patron_id]) if params[:patron_id]
+      @context = @person   = Person.find(params[:person_id]) if params[:person_id]
       @quests  = @context.quests if @context
       @quests ||= Quest.all
       @quests  = @quests.where(type: params[:type].to_sym) if params[:type]

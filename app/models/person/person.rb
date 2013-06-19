@@ -8,14 +8,30 @@ class Person
 
   has_many :patrons
 
-  def quests()   Quest.where :patron_id.in => patron_ids end
-  def reviews() Review.where :patron_id.in => patron_ids end
-  def rewards() Reward.where :patron_id.in => patron_ids end
+  def quests
+    Quest.in patron_id: patron_ids
+  end
+
+  def reviews
+    Review.in patron_id: patron_ids
+  end
+
+  def rewards
+    Reward.in patron_id: patron_ids
+  end
+
+  def branches
+    Branch.in id: patrons.map(&:branch_id)
+  end
+
+  def businesses
+    Business.in id: branches.map(&:business_id)
+  end
+
 
   def patronize(branch)
     self.patrons.where(branch_id: branch.id).first_or_create!
   end
-  
-  private
-    def patron_ids() self.patrons.map { |p| p.id } end
+
+  def patron_ids() patrons.map(&:id) end
 end

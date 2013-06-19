@@ -3,19 +3,19 @@
 
 ### People API Endpoints
 ````
-GET /people/:id
+GET /people
 GET /people/:id
 !GET /people/:id/feed     (my friends activity: quests started and reawards redeemed)
 !GET /people/:id/activity (my activity: my quests started and my rewards redeemed)
-!GET /people/:id/branches
+GET /people/:id/branches
 !GET /people/:id/branches/:branch_id (return branch profile + patron's points)
 !GET /people/:id/businesses
-!GET /people/:id/quests
-!GET /people/:id/photoquests
-!GET /people/:id/commentquests
+GET /people/:id/quests
+GET /people/:id/photoquests
+GET /people/:id/commentquests
 !GET /people/:id/approvals
 !GET /people/:id/comments
-!GET /people/:id/rewards
+GET /people/:id/rewards
 ````
 
 ### Branches API Endpoints
@@ -71,8 +71,8 @@ GET /businesses/:id/people
 GET /businesses/:id/quests?type=:quest_type
 GET /businesses/:id/photoquests
 GET /businesses/:id/commentquests
-!GET /branches/:id/approvals
-!GET /branches/:id/comments
+!GET /businesses/:id/approvals
+!GET /businesses/:id/comments
 GET /businesses/:id/rewards
 ````
 

@@ -12,6 +12,8 @@ class BusinessesController < ApplicationController
 
   private
     def set_businesses
+      @context      = @person = Person.find(params[:person_id]) if params[:person_id]
+      @businesses   = @context.businesses if @context
       @businesses ||= Business.all
     end
 
