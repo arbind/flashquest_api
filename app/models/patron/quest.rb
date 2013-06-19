@@ -11,4 +11,6 @@ class Quest
   belongs_to :patron
   has_one :review
 
+  embeds_many :comments
+  embeds_many :approvals
 end

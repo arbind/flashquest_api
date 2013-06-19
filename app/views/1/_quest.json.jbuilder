@@ -2,7 +2,8 @@ json.quest_path quest_path quest
 json.partial! '1/patron_ids', patron: quest.patron
 
 json.status quest.status
-json.approvals_count = -1
+json.num_approvals quest.approvals.count
+json.num_comments quest.comments.count
 
 branch = quest.patron.branch
 quest_description = branch.quest_descriptions.find(quest.quest_description_id)
@@ -14,5 +15,8 @@ if quest.review.present?
     json.partial! '1/review', review: quest.review
   end
 end
+
+json.comments  { json.array! quest.comments }
+json.approvals { json.array! quest.approvals }
 
 json.extract! quest, :created_at, :updated_at
