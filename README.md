@@ -8,7 +8,7 @@
 
 ### Device
 ````
- POST! /device/me               {:device_id} -> 200: :user, :token
+ POST! /device/me                 :device_id -> 200: :user, :token
 *POST! /device/finished-launching            -> 202:
 *POST! /device/became-active                 -> 202:
 *POST! /device/did-resign                    -> 202:
@@ -66,7 +66,8 @@
 ### Quests
 ````
 *GET   /quests                               -> 200: [:quest]
-*POST! /quests/ {:branch_id, :quest_definition_id, :review} -> 200: :quest
+*POST! /quests                               -> 200: :quest
+{ :branch_id, :quest_definition_id, :review }
 *GET   /quests/:id                           -> 200: :quest
 *DEL!  /quests/:id                           -> 204:
 *POST! /quests/:id/approvals                 -> 200: :quest
@@ -78,7 +79,8 @@
 ### Rewards
 ````
 *GET   /rewards                              -> 200: [:reward]
-*POST! /rewards {:branch_id, :reward_definition_id} -> 200: [:reward]
+*POST! /rewards                              -> 200: [:reward]
+{ :branch_id, :reward_definition_id }
 *GET   /rewards/:id                          -> 200: :reward
 ````
 
