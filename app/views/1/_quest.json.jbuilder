@@ -1,4 +1,4 @@
-json.quest_path quest_path quest
+json.quest_path api_v1_quest_path quest
 json.partial! '1/patron_ids', patron: quest.patron
 
 json.status quest.status

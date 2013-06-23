@@ -1,17 +1,17 @@
 # Flashquest API
 
-## Endpoints:
+## Endpoints for /api/v1:
 
-  
-###  \* indicate endpoints that are token protected 
+
+###  \* indicate endpoints that are token protected
 ###  \! indicate endpoints that are in development
 
 ### Device
 ````
- PUT!  /device/me               {:device_id} -> 200: :user, :token
+ POST! /device/me               {:device_id} -> 200: :user, :token
 *POST! /device/finished-launching            -> 202:
 *POST! /device/became-active                 -> 202:
-*POST! /device/resigned                      -> 202:
+*POST! /device/did-resign                    -> 202:
 ````
 
 ### Current User
@@ -50,8 +50,6 @@
 *GET   /branches/:id/photoquests             -> 200: [:quest]
 *GET   /branches/:id/commentquests           -> 200: [:quest]
 *GET   /branches/:id/rewards                 -> 200: [:reward]
-*POST! /branch/:id/start-quest/:id {:review} -> 200: :quest
-*POST! /branch/:id/redeem-reward/:id         -> 200: [:reward]
 ````
 
 ### Patrons
@@ -68,17 +66,19 @@
 ### Quests
 ````
 *GET   /quests                               -> 200: [:quest]
+*POST! /quests/ {:branch_id, :quest_definition_id, :review} -> 200: :quest
 *GET   /quests/:id                           -> 200: :quest
-*PUT!  /quests/:id/approval                  -> 200: :quest
-*POST! /quests/:id/comment          :comment -> 200: :quest
-*DEL!  /quests/id                            -> 204:
-*DEL!  /quests/:id/approval                  -> 204:
-*DEL!  /quests/:id/comment/:id               -> 204:
+*DEL!  /quests/:id                           -> 204:
+*POST! /quests/:id/approvals                 -> 200: :quest
+*POST! /quests/:id/comments         :comment -> 200: :quest
+*DEL!  /quests/:id/approvals/:id             -> 204: :quest
+*DEL!  /quests/:id/comments/:id              -> 204: :quest
 ````
 
 ### Rewards
 ````
 *GET   /rewards                              -> 200: [:reward]
+*POST! /rewards {:branch_id, :reward_definition_id} -> 200: [:reward]
 *GET   /rewards/:id                          -> 200: :reward
 ````
 
@@ -95,7 +95,6 @@
 *GET   /businesses/:id/commentquests         -> 200: [:quest]
 *GET   /businesses/:id/rewards               -> 200: [:reward]
 ````
-
 
 ## Start Server:
 ````

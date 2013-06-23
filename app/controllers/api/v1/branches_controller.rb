@@ -1,4 +1,4 @@
-class BranchesController < ApplicationController
+class Api::V1::BranchesController < Api::V1::ApplicationController
   before_action :set_branches, only: [:index]
   before_action :set_branch,   only: [:show]
 

@@ -1,4 +1,4 @@
-class QuestsController < ApplicationController
+class Api::V1::QuestsController < Api::V1::ApplicationController
   before_action :set_quest,  only: [:show]
   before_action :set_quests, only: [:index]
 

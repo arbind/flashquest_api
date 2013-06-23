@@ -1,5 +1,5 @@
-json.branch_path branch_path branch
-json.business_path business_path branch.business
+json.branch_path api_v1_branch_path branch
+json.business_path api_v1_business_path branch.business
 
 json.name branch.name || branch.business.name
 json.type branch.type || branch.business.type

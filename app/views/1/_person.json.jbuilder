@@ -1,4 +1,4 @@
-json.person_path person_path person
+json.person_path api_v1_person_path person
 json.extract! person.profiles
 
 json.display_name 'my name'

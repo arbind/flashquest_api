@@ -1,4 +1,4 @@
-json.reward_path reward_path reward
+json.reward_path api_v1_reward_path reward
 json.partial! '1/patron_ids', patron: reward.patron
 
 branch = reward.patron.branch

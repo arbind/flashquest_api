@@ -1,4 +1,4 @@
-class BusinessesController < ApplicationController
+class Api::V1::BusinessesController < Api::V1::ApplicationController
   before_action :set_business,   only: [:show]
   before_action :set_businesses, only: [:index]
 

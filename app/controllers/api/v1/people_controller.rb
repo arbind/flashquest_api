@@ -1,4 +1,4 @@
-class PeopleController < ApplicationController
+class Api::V1::PeopleController < Api::V1::ApplicationController
   before_action :set_person, only: [:show]
   before_action :set_people, only: [:index]
 
@@ -18,9 +18,9 @@ class PeopleController < ApplicationController
     def set_people
       @context = @business = Business.find(params[:business_id]) if params[:business_id]
       @context = @branch   = Branch.find(params[:branch_id]) if params[:branch_id]
-      @people  = @context.people if @context and @context.respond_to? :people
-      @patrons = @context.patrons if @people.nil? and @context.respond_to? :patrons
-      @people ||= Person.all
+      return @people  = @context.people if @context and @context.respond_to? :people
+      return @patrons = @context.patrons if @people.nil? and @context.respond_to? :patrons
+      @people = Person.all
     end
 
     def set_person
