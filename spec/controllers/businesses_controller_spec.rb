@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe BusinessesController do
+describe Api::V1::BusinessesController do
   let(:valid_attributes) { {
     "name" => "MyString" }
   }

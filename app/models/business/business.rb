@@ -5,6 +5,7 @@ class Business
   field :name, type: String
   field :type, type: String
   field :url, type: String
+  field :phone, type: String
 
   has_many :branches
 
