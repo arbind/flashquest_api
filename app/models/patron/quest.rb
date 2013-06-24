@@ -8,9 +8,10 @@ class Quest
   field :was_shared_on_twitter, type: String
   field :was_shared_on_facebook, type: String
 
-  belongs_to :patron
-  has_one :review
+  embeds_one :review
+  has_many :comments
+  has_many :approvals
 
-  embeds_many :comments
-  embeds_many :approvals
+  belongs_to :patron
+
 end

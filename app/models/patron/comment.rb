@@ -8,6 +8,6 @@ class Comment
   field :photo_url, type: String
   field :status, type: Symbol, default: :pending_approval
 
-  embedded_in :quest
+  belongs_to :quest
   belongs_to :person
 end

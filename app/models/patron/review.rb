@@ -8,6 +8,5 @@ class Review
   field :photo_url, type: String
   field :status, type: Symbol, default: :pending_approval
 
-
-  belongs_to :quest
+  embedded_in :quest
 end

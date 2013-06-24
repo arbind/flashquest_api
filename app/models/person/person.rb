@@ -3,9 +3,13 @@ class Person
   include Mongoid::Timestamps
 
   field :profiles, type: Hash
+  field :display_name, type: String
+
   has_many :devices
 
   has_many :patrons
+  has_many :comments
+  has_many :approvals
 
   def quests
     Quest.in patron_id: patron_ids
