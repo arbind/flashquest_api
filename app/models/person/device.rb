@@ -3,6 +3,16 @@ class Device
   include Mongoid::Timestamps
 
   field :identifier, type: String
-  
-  embedded_in :user
+  field :access_token, type: String
+
+  belongs_to :person
+
+  before_create :generate_access_token
+
+
+private
+  def generate_access_token
+    self.access_token = "#{identifier}.#{SecureRandom.hex}"
+  end
+
 end

@@ -3,8 +3,7 @@ class Person
   include Mongoid::Timestamps
 
   field :profiles, type: Hash
-
-  embeds_many :devices
+  has_many :devices
 
   has_many :patrons
 
