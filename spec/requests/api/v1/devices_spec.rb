@@ -32,13 +32,13 @@ describe "Devices", :type => :request do
   let (:num_people)       { Person.count }
 
   let (:http_path)        { devices_path }
-  let (:http_parameters)  { {device: valid_attributes} }
+  let (:http_params)      { {device: valid_attributes} }
 
   describe "POST /devices" do
 
     context "from a new device:" do
       before { num_devices and num_people }
-      before { post http_path, http_parameters, nil }
+      before { post http_path, http_params, nil }
       it_behaves_like "an access token request"
       it "adds a new device" do
         expect(Device.count).to be num_devices + 1
@@ -52,9 +52,10 @@ describe "Devices", :type => :request do
       include_context "access token"
       let (:valid_attributes)   { { identifier: current_device_identifier } }
       before { access_token }
-      before { post http_path, http_parameters, nil }
+      before { post http_path, http_params, nil }
 
       it_behaves_like "an access token request"
+
       it "doesn't add another device" do
         expect(Device.count).to be num_devices
       end
