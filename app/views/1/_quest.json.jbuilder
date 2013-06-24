@@ -16,7 +16,8 @@ if quest.review.present?
   end
 end
 
-json.comments  { json.array! quest.comments }
+json.comments  { json.partial! '1/comments', items: quest.comments }
+
 json.approvals { json.array! quest.approvals }
 
 json.extract! quest, :created_at, :updated_at

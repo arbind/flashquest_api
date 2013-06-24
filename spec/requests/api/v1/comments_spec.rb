@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe "Comments", :type => :request do
   include_context "json response"
+  include_context "access token"
+
   let (:valid_attributes)   {
     {
       text: 'a note',
@@ -14,44 +16,65 @@ describe "Comments", :type => :request do
   let (:quest_description)  { branch.quest_descriptions.create }
   let (:patron)             { person.patronize branch }
   let (:quest)              { patron.start_quest quest_description }
-  let (:comments)           { quest.comments = [Comment.new(text:'0'), Comment.new(text:'1'), Comment.new(text:'1')]}
+  let (:comments)           {
+    comments = []
+    (0..4).to_a.each do |i|
+      c = Comment.create(text:"#{i}")
+      comments << c
+      person.comments << c
+      quest.comments << c
+    end
+    comments
+  }
   let!(:num_comments)       { comments.count }
 
-  let (:comment_path)       { api_v1_quest_comments_path(quest) }
   let (:json_comments)      { json_data['comments']}
 
   describe "POST /quests/:id/comments" do
-    before { post comment_path, comment: valid_attributes }
-    before { quest.reload }
-    it "responds with 200" do
-      expect(response.status).to be 200
-    end
-    it "adds a comment" do
-      expect(quest.comments.count).to be num_comments + 1
-      expect(json_comments.count).to be num_comments + 1
+    let (:http_path)          { api_v1_quest_comments_path(quest) }
+    let (:http_params)        { {comment: valid_attributes} }
+
+    it_behaves_like 'a protected endpoint', "post"
+
+    context "for the current user" do
+      before { post http_path, http_params, http_header_token }
+      before { quest.reload }
+      it "responds with 200" do
+        expect(response.status).to be 200
+      end
+      it "adds a comment" do
+        expect(quest.comments.count).to be num_comments + 1
+        expect(json_comments.count).to be num_comments + 1
+      end
     end
   end
 
   describe "DELETE /quests/:id/comments" do
     let (:comment)      { comments[1] }
-    let (:comment_path) { api_v1_quest_comment_path(quest, comment) }
-    before { delete comment_path }
-    before { quest.reload }
+    let (:http_path)    { api_v1_quest_comment_path(quest, comment) }
+    let (:http_params)  { nil }
 
-    it "responds with 204" do
-      expect(response.status).to be 204
-    end
+    it_behaves_like 'a protected endpoint', :delete
 
-    it "removes the comment" do
-      expect(quest.comments.count).to be num_comments - 1
+    context "for the current user" do
+      before { delete http_path, http_params, http_header_token }
+      before { quest.reload }
+      it "responds with 205" do
+        expect(response.status).to be 205
+      end
+
+      it "removes the comment" do
+        expect(quest.comments.count).to be num_comments - 1
+        expect(json_comments.count).to be num_comments - 1
+      end
     end
 
     context "given a non-existent id" do
-      let (:comment_path) { "#{api_v1_quest_comment_path(quest, comment)}xxx" }
+      before { delete http_path, http_params, http_header_token }
+      let (:http_path)    { "#{api_v1_quest_comment_path(quest, comment)}xxx" }
       it "responds with 404" do
         expect(response.status).to be 404
       end
     end
   end
-
 end
