@@ -5,6 +5,11 @@ class Api::V1::ApplicationController < ApplicationController
 
   def render_exception(exception)
     @error = exception.message
+    if exception.kind_of? Api::V1::Error::ApiException
+      response.status = exception.code
+    else
+      response.status = 404
+    end
     render template: "api/v1/error"
   end
 
