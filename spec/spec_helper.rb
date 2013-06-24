@@ -16,12 +16,15 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
   config.before(:suite) do
-    DatabaseCleaner[:mongoid].strategy = :truncation
-    DatabaseCleaner[:mongoid].start
+    DatabaseCleaner.strategy = :truncation
   end
 
-  config.after(:suite) do
-    DatabaseCleaner[:mongoid].clean
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
   end
 
   # ## Mock Framework
