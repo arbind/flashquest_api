@@ -24,6 +24,6 @@ class Api::V1::ApplicationController < ApplicationController
 
 private
   def access_token_params
-    { access_token: request.headers[:access_token] }
+    { access_token: request.headers[:HTTP_ACCESS_TOKEN] }
   end
 end
