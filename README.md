@@ -8,16 +8,16 @@
 
 ### Device Access Token
 ````
- POST  /device                :device_id -> 200: :user, :token
-*POST! /device/finished-launching        -> 202:
-*POST! /device/became-active             -> 202:
-*POST! /device/did-resign                -> 202:
+ POST  /devices                :device_id -> 200: :user, :token
+*POST! /devices/finished-launching        -> 202:
+*POST! /devices/became-active             -> 202:
+*POST! /devices/did-resign                -> 202:
 ````
 
 ### Current User
 ````
-*GET!  /me                               -> 200: :user
-*POST! /me/                              -> 200: :user
+*GET   /me                               -> 200: :user
+*POST! /me                               -> 200: :user
 *POST! /me/twitter                       -> 200: :user
 *POST! /me/facebook                      -> 200: :user
 *GET!  /me/feed                          -> 200: [:activity]  (of friends)

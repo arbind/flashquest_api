@@ -5,6 +5,8 @@ FlashquestApi::Application.routes.draw do
   namespace :api do namespace :v1 do
     resources :devices,         only: [:create], defaults: { format: 'json' }
 
+    resources :me,              only: [:index], defaults: { format: 'json' }
+
     resources :businesses,      only: [:index, :show], defaults: { format: 'json' } do
       resources :branches,      only: [:index], defaults: { format: 'json' }
       resources :patrons,       only: [:index], defaults: { format: 'json' }
