@@ -15,6 +15,12 @@ Dir[Rails.root.join("spec/requests/shared/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
+end
+
+FactoryGirl.find_definitions
+
+RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
   end
