@@ -11,8 +11,8 @@ shared_context "an access token request" do
   end
 
   it "responds with the person who owns the device" do
-    expect(json_person).to be_present
-    expect(json_person['person_path']).to be_present
+    expect(json_data).to be_present
+    expect(json_data['person_path']).to be_present
   end
 end
 
@@ -24,14 +24,12 @@ describe "Devices", :type => :request do
     }
   }
 
-  let (:devices_path)         { api_v1_devices_path }
   let (:json_access_token)    { json_meta['access_token']}
-  let (:json_person)          { json_data }
 
   let (:num_devices)      { Device.count }
   let (:num_people)       { Person.count }
 
-  let (:http_path)        { devices_path }
+  let (:http_path)        { api_v1_devices_path }
   let (:http_params)      { {device: valid_attributes} }
 
   describe "POST /devices" do

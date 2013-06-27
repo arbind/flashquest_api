@@ -10,13 +10,15 @@ describe "Comments", :type => :request do
     }
   }
 
-  let (:person)             { Person.create }
-  let (:business)           { Business.create }
+  let (:person)             { create :person }
+  let (:business)           { create :business }
   let (:branch)             { business.branches.create }
   let (:quest_description)  { branch.quest_descriptions.create }
   let (:patron)             { person.patronize branch }
   let (:quest)              { patron.start_quest quest_description }
-  let (:comments)           { create_list :comment, 5, person: person, quest: quest }
+  let (:comments)           {
+    create_list :comment, 5, person: person, quest: quest
+  }
   let!(:num_comments)       { comments.count }
 
   let (:json_comments)      { json_data['comments']}
