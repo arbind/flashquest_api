@@ -2,21 +2,31 @@ module AccessTokenHelpers
   shared_context "access token" do
     let!(:current_device_identifier)  { 'a-hardware-identifier' }
     let!(:current_device) {
-      d = Device.create identifier: current_device_identifier
+      Device.create identifier: current_device_identifier
     }
     let!(:current_person) {
-      p = Person.create
-      p.devices << current_device
-      p
+      person = Person.create
+      person.devices << current_device
+      person
     }
 
     let!(:access_token)       { current_device.access_token }
-    let (:http_header_token)  { { access_token: access_token } }
+
+    let(:_http_params)        { http_params if defined? http_params }
+    let (:access_token_headers)      {
+      access_token_headers = http_headers if defined? http_headers
+      access_token_headers ||= {}
+      access_token_headers.merge!({ HTTP_ACCESS_TOKEN: access_token })
+    }
   end
 
   shared_examples_for 'a protected endpoint' do |http_method|
     context 'with a good access token' do
-      before{ send(http_method.to_sym, http_path, http_params, http_header_token) }
+      before do
+        _http_method = http_method.to_sym if defined? http_method
+        _http_method ||= :get
+        send(_http_method, http_path, _http_params, access_token_headers)
+      end
       it 'response status is not 401' do
         expect(response.status).not_to eq 401
       end
@@ -25,7 +35,11 @@ module AccessTokenHelpers
       end
     end
     context 'without an access token' do
-      before{ send(http_method.to_sym, http_path, http_params, nil) }
+      before do
+        _http_method = http_method.to_sym if defined? http_method
+        _http_method ||= :get
+        send(_http_method, http_path, _http_params, nil)
+      end
       it 'response status is 401' do
         expect(response.status).to eq 401
       end
@@ -34,8 +48,16 @@ module AccessTokenHelpers
       end
     end
     context 'without an access token' do
-      let (:http_header_token)  { { access_token: "#{access_token}-xx" } }
-      before{ send(http_method.to_sym, http_path, http_params, http_header_token) }
+      let (:access_token_headers)  {
+        access_token_headers = http_headers if defined? http_headers
+        access_token_headers ||= {}
+        access_token_headers.merge!({ access_token: "#{access_token}-xx" })
+      }
+      before do
+        _http_method = http_method.to_sym if defined? http_method
+        _http_method ||= :get
+        send(_http_method, http_path, _http_params, access_token_headers)
+      end
       it 'response status is 401' do
         expect(response.status).to eq 401
       end

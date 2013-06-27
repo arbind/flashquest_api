@@ -4,12 +4,20 @@ class Api::V1::ApplicationController < ApplicationController
   rescue_from Exception, :with => :render_exception
 
   def render_exception(exception)
-    @error = exception.message
-    if exception.kind_of? Api::V1::Error::ApiException
+    if exception.respond_to? :code
       response.status = exception.code
-    else
+    elsif exception.kind_of? Mongoid::Errors::DocumentNotFound
       response.status = 404
+    else
+      response.status = 500
     end
+
+    if exception.respond_to? :message
+      @error = exception.message
+    else
+      @error = exception.to_s
+    end
+
     render template: "api/v1/error"
   end
 
