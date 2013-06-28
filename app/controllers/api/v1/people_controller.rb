@@ -1,4 +1,5 @@
 class Api::V1::PeopleController < Api::V1::ApplicationController
+  before_action :ensure_access_token
   before_action :set_person, only: [:show]
   before_action :set_people, only: [:index]
 
