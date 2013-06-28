@@ -1,4 +1,4 @@
 FactoryGirl.define do
-  factory :business do
+  factory :branch do
   end
 end

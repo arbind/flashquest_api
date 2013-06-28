@@ -17,29 +17,29 @@
 ### Current User
 ````
 *GET   /me                               -> 200: :user
-*POST! /me                               -> 200: :user
-*POST! /me/twitter                       -> 200: :user
-*POST! /me/facebook                      -> 200: :user
-*GET!  /me/feed                          -> 200: [:activity]  (of friends)
-*GET!  /me/activity                      -> 200: [:activity]  (mine)
-*GET!  /me/businesses/:id                -> 200: :business    (perspective)
-*GET!  /me/branches/:id                  -> 200: :branch      (perspective)
+ *POST! /me                               -> 200: :user
+ *POST! /me/twitter                       -> 200: :user
+ *POST! /me/facebook                      -> 200: :user
+ *GET!  /me/feed                          -> 200: [:activity]  (of friends)
+ *GET!  /me/activity                      -> 200: [:activity]  (mine)
+ *GET!  /me/businesses/:id                -> 200: :business    (perspective)
+ *GET!  /me/branches/:id                  -> 200: :branch      (perspective)
 ````
 
 ### People
 ````
 *GET   /people                           -> 200: [:person]
 *GET   /people/:id                       -> 200: :person
-*GET!  /people/:id/feed                  -> 200: [:activity]  (of friends)
-*GET!  /people/:id/activity              -> 200: [:activity]  (person's)
+ *GET!  /people/:id/feed                  -> 200: [:activity]  (of friends)
+ *GET!  /people/:id/activity              -> 200: [:activity]  (person's)
 *GET   /people/:id/branches              -> 200: [:branch]
-*GET   /people/:id/branches/:id          -> 200: [:branch]    (perspective)
-*GET!  /people/:id/businesses            -> 200: [:business]
-*GET!  /people/:id/businesses/:id        -> 200: [:business]  (perspective)
-*GET   /people/:id/quests                -> 200: [:quest]
-*GET   /people/:id/photoquests           -> 200: [:quest]
-*GET   /people/:id/commentquests         -> 200: [:quest]
-*GET   /people/:id/rewards               -> 200: [:reward]
+ *GET!  /people/:id/branches/:id          -> 200: [:branch]    (perspective)
+ *GET!  /people/:id/businesses            -> 200: [:business]
+ *GET!  /people/:id/businesses/:id        -> 200: [:business]  (perspective)
+ *GET   /people/:id/quests                -> 200: [:quest]
+ *GET   /people/:id/photoquests           -> 200: [:quest]
+ *GET   /people/:id/commentquests         -> 200: [:quest]
+ *GET   /people/:id/rewards               -> 200: [:reward]
 ````
 
 ### Branches

@@ -20,6 +20,12 @@ end
 
 FactoryGirl.find_definitions
 
+def create_ecosystem
+  ecosystem = {}
+  ecosystem[:businesses] = create_list :business, 3
+  ecosystem[:people] = create_list :business, 3
+end
+
 RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
