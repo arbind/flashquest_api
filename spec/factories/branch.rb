@@ -1,5 +1,7 @@
 FactoryGirl.define do
   factory :branch do
+    business
+
     after :create do |branch, ctx|
       [:fb_like, :twitter_follow, :comment, :photo].each do |type|
         create :quest_description,
