@@ -1,5 +1,5 @@
 json.person_path api_v1_person_path person
-json.extract! person, :display_name, :twitter_profile, :facebook_profile
+json.extract! person, :name, :twitter, :facebook
 
 json.patrons do
   json.array! person.patrons do |patron|

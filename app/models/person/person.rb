@@ -2,10 +2,10 @@ class Person
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :display_name, type: String
+  field :name, type: String
 
-  field :twitter_profile,  type: Hash
-  field :facebook_profile, type: Hash
+  field :twitter,  type: Hash
+  field :facebook, type: Hash
 
   has_many :devices
 

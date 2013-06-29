@@ -14,23 +14,43 @@ describe "/me", :type => :request do
   end
 
   context :PATCH do
-    let (:http_path)  { api_v1_my_profile_path }
+    let (:json_twitter)     { json_data["twitter"] }
+    let (:json_facebook)    { json_data["facebook"] }
+    let (:http_path)        { api_v1_my_profile_path }
+
+    let(:twitter_screen_name) { '_me.twitter' }
+    let (:twitter_profile)  {{
+      "id" => 11,
+      'name' => '_me',
+      'screen_name' => twitter_screen_name
+    }}
+
+    let(:facebook_username)   { '_me.facebook' }
+    let (:facebook_profile) {{
+      "id" => 22,
+      'name' => '_me',
+      'username' => facebook_username
+      }}
     let (:valid_attributes)   {
       {
-        "display_name" => 'Tara',
+        "name" => 'Tara',
+        "twitter" => twitter_profile,
+        "facebook" => facebook_profile,
       }
     }
     let (:http_params)  { {me: valid_attributes} }
-    before { expect(me.attributes).to_not include valid_attributes }
+    before { expect(me.attributes).to_not include valid_attributes.slice("name") }
     before { patch http_path, http_params, access_token_headers }
     before { a_person.reload }
     it_behaves_like 'a protected endpoint', :patch
     it_behaves_like 'a json person'
     it "responds with an updated profile" do
-      expect(json_data).to include valid_attributes
+      expect(json_data).to include valid_attributes.slice("name")
+      expect(json_twitter["screen_name"]).to eq twitter_screen_name
+      expect(json_facebook["username"]).to eq facebook_username
     end
     it "updates the current user's profile" do
-      expect(me.attributes).to include valid_attributes
+      expect(me.attributes).to include valid_attributes.slice("name")
     end
   end
 end
