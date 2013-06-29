@@ -4,10 +4,7 @@ class Api::V1::CommentsController < Api::V1::ApplicationController
 
   # POST /api/v1/quests/:quest_id/comments
   def create
-    comment = Comment.new comment_params
-    @quest.comments << comment
-    @current_user.comments << comment
-
+    comment = Comment.create comment_params.merge({ quest: @quest, person: @current_user })
     render template: '/api/v1/quests/show'
   end
 

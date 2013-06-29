@@ -18,8 +18,8 @@ POST  /devices                :device_id -> 200: :user, :token
 ````
 *GET    /me                               -> 200: :person
 *PATCH! /me   :name, :twitter, :facebook -> 200: :person
-  +*GET!  /me/feed                          -> 200: [:activity]  (of friends)
-  +*GET!  /me/activity                      -> 200: [:activity]  (mine)
+*GET!  /me/feed                          -> 200: [:activity]  (of friends)
+*GET!  /me/activity                      -> 200: [:activity]  (mine)
 ````
 
 ### People

@@ -12,6 +12,14 @@ class Api::V1::MeController < Api::V1::ApplicationController
     render :me
   end
 
+  def feed
+    @activities = Activity.all
+  end
+
+  def activity
+    @activities = @current_user.activities
+  end
+
 private
   def me_params
     params.require(:me)

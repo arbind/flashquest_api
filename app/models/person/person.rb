@@ -12,6 +12,7 @@ class Person
   has_many :patrons
   has_many :comments
   has_many :approvals
+  has_many :activities
 
   def quests
     Quest.in patron_id: patron_ids

@@ -7,6 +7,7 @@ class Patron
 
   has_many :quests
   has_many :rewards
+  has_many :activities
 
   def start_quest(quest_description)
     self.quests.create({ quest_description_id: quest_description.id, type: quest_description.type})

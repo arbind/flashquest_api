@@ -7,6 +7,10 @@ FlashquestApi::Application.routes.draw do
 
     get   'me', to: 'me#index',  as: :me,         defaults: { format: 'json' }
     patch 'me', to: 'me#update', as: :my_profile, defaults: { format: 'json' }
+    get 'me/feed', to: 'me#feed', as: :me_feed, defaults: { format: 'json' }
+    get 'me/activity', to: 'me#activity', as: :me_activity, defaults: { format: 'json' }
+
+    resources :activity,        only: [:show], defaults: { format: 'json' }
 
     resources :businesses,      only: [:index, :show], defaults: { format: 'json' } do
       resources :branches,      only: [:index], defaults: { format: 'json' }
