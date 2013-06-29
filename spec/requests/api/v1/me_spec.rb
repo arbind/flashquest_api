@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "/me", :type => :request do
   include_context "json response"
   include_context "access token"
-  let(:subject) { current_person }
+  let(:subject) { me }
 
   context :GET do
     let (:http_path)  { api_v1_me_path }

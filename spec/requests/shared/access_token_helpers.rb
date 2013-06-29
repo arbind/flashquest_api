@@ -4,7 +4,7 @@ module AccessTokenHelpers
     let!(:current_device) {
       Device.create identifier: current_device_identifier
     }
-    let!(:current_person) {
+    let!(:me) {
       person = Person.create
       person.devices << current_device
       person
