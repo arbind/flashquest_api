@@ -11,12 +11,17 @@ describe :people, type: :request do
     branches = []
     branch_list = []
     businesses.each do |b|
-      (0..1).to_a.each { branches << create(:branch, business: b) }
+      branches.concat create_list(:branch, 2, business: b)
     end
     i = 0
     branches.each do |b|
+      b.quest_descriptions.create
+      b.quest_descriptions.create
+      b.reward_descriptions.create
+      b.reward_descriptions.create
      if 0 == (i % 2)
-        a_person.patronize(b)
+        patron = a_person.patronize(b)
+        patron.start_quest b.quest_descriptions[0]
         branch_list.push b
       end
       i += 1
