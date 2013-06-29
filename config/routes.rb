@@ -5,8 +5,10 @@ FlashquestApi::Application.routes.draw do
   namespace :api do namespace :v1 do
     resources :devices,         only: [:create], defaults: { format: 'json' }
 
-    resources :me,              only: [:index], defaults: { format: 'json' }
-    get 'me', to: 'me#index',         as: :me,  defaults: { format: 'json' }
+    get   'me', to: 'me#index',  as: :me,         defaults: { format: 'json' }
+    patch 'me', to: 'me#update', as: :my_profile, defaults: { format: 'json' }
+    # patch 'me/twitter',  to: 'me#update_twitter', as: :my_twitter_profile, defaults: { format: 'json' }
+    # patch 'me/facebook', to: 'me#update_facebook', as: :my_facebook_profile, defaults: { format: 'json' }
 
     resources :businesses,      only: [:index, :show], defaults: { format: 'json' } do
       resources :branches,      only: [:index], defaults: { format: 'json' }

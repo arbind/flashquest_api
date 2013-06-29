@@ -17,7 +17,7 @@
 ### Current User
 ````
 *GET   /me                               -> 200: :user
- *POST! /me                               -> 200: :user
+*PATCH! /me                               -> 200: :user
  *POST! /me/twitter                       -> 200: :user
  *POST! /me/facebook                      -> 200: :user
  *GET!  /me/feed                          -> 200: [:activity]  (of friends)
