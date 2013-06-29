@@ -7,7 +7,7 @@ shared_context "an access token request" do
   end
 
   it "responds with an access token" do
-    expect(json_access_token).not_to be_nil
+    expect(json_access_token).to be_present
   end
 
   it "responds with the person who owns the device" do

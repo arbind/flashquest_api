@@ -4,7 +4,7 @@ module JsonItem
       expect(response.status).to be 200
     end
 
-    it 'returns the items path' do
+    it "returns the item's path" do
       expect(json_data["#{name}_path"]).to eq send( :"api_v1_#{name}_path", subject)
     end
   end
