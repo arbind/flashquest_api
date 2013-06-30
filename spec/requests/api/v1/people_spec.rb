@@ -7,7 +7,7 @@ describe "/people", type: :request do
   let (:http_path)    { api_v1_people_path }
 
   context :GET do
-    let (:subject)    { people }
+    let (:subject)    { Person.all }
     before { get http_path, nil, access_token_headers }
     it_behaves_like 'a protected endpoint', :get
     it_behaves_like 'a json list for', :person

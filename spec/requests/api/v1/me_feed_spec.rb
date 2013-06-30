@@ -16,10 +16,11 @@ describe "/me/feed", :type => :request do
   end
 
   context :GET do
+    let (:subject)    { Activity.all }
     before { get http_path, nil, access_token_headers }
     it_behaves_like "a protected endpoint", :get
     it_behaves_like "a json list for", :activity
-    it "has eeryone's activities" do
+    it "has everyone's activities" do
       expect(json_data.length).to eq Activity.count
     end
   end

@@ -16,6 +16,9 @@ module JsonItem
     it "returns an array" do
       expect(json_data).to be_an Array
     end
+    it "has the right number of items" do
+      expect(json_data.length).to eq subject.length
+    end
     it "returns a list of specific items" do
       expect(json_data).to have_at_least(1).items
       json_data.each do |json_item|
