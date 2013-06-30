@@ -3,16 +3,16 @@ ruby "2.0.0"
 gem 'rails', '4.0.0.rc1'
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson_ext'
-
-gem 'sass-rails', '~> 4.0.0.rc1'
-gem 'haml-rails', '~> 0.4'
-gem 'coffee-rails', '~> 4.0.0'
-gem 'uglifier', '>= 1.3.0'
-
-gem 'jquery-rails'
 gem 'jbuilder', '~> 1.0.1'
 
-gem 'newrelic_rpm' #Server Monitoring
+gem 'newrelic_rpm'
+
+# gem 'sass-rails', '~> 4.0.0.rc1'
+# gem 'haml-rails', '~> 0.4'
+# gem 'coffee-rails', '~> 4.0.0'
+# gem 'uglifier', '>= 1.3.0'
+
+# gem 'jquery-rails'
 
 group :production do
   gem 'thin'
