@@ -20,6 +20,8 @@ class Api::V1::BusinessesController < Api::V1::ApplicationController
     end
 
     def set_business
+      @person = Person.find(params[:person_id]) if params[:person_id]
+      @patron = Patron.find(params[:patron_id]) if params[:patron_id]
       @business = Business.find(params[:id])
     end
 end

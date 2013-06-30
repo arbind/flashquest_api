@@ -27,7 +27,7 @@ FlashquestApi::Application.routes.draw do
       resources :feed,          only: [:index], defaults: { format: 'json' }
       resources :activities,    only: [:index], defaults: { format: 'json' }
       resources :branches,      only: [:index, :show], defaults: { format: 'json' }
-      resources :businesses,    only: [:index], defaults: { format: 'json' }
+      resources :businesses,    only: [:index, :show], defaults: { format: 'json' }
       resources :quests,        only: [:index], defaults: { format: 'json' }
       resources :photoquests,   only: [:index], controller: :quests, defaults: { format: 'json', type: 'photo' }
       resources :commentquests, only: [:index], controller: :quests, defaults: { format: 'json', type: 'comment' }
