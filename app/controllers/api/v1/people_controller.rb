@@ -4,8 +4,8 @@ class Api::V1::PeopleController < Api::V1::ApplicationController
   before_action :set_people, only: [:index]
 
   # GET /people
-  # GET /branches/1/people.json
-  # GET /businesses/1/people.json
+  # GET /branches/1/people
+  # GET /businesses/1/people
   def index
     render :index if @people
     render :index_for_patrons if @patrons

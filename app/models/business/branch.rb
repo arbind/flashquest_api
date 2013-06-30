@@ -37,7 +37,12 @@ class Branch
     Reward.in patron_id: patron_ids
   end
 
+  def people
+    Person.in id: people_ids
+  end
+
   def patron_ids() patrons.map(&:id) end
+  def people_ids() patrons.map(&:person_id) end
 
 private
 
