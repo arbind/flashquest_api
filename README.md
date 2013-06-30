@@ -80,7 +80,7 @@ POST  /devices                :device_id -> 200: :user, :token
 ````
 *GET   /businesses                       -> 200: [:business]
 *GET   /businesses/:id                   -> 200: :business    (perspective)
-  -*GET   /businesses/:id/branches          -> 200: [:branch]
+*GET   /businesses/:id/branches          -> 200: [:branch]
   -*GET   /businesses/:id/patrons           -> 200: [:patron]
   -*GET   /businesses/:id/people            -> 200: [:person]
   -*GET   /businesses/:id/quests?type=:type -> 200: [:quest]
