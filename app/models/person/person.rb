@@ -14,6 +14,15 @@ class Person
   has_many :approvals
   has_many :activities
 
+  def points_at_business(business)
+    points = 0
+    business.branches.each do |branch|
+      patron = branch.patrons.where(person_id: self.id).first
+      points = points + patron.points if patron
+    end
+    points
+  end
+
   def quests
     Quest.in patron_id: patron_ids
   end

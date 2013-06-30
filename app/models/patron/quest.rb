@@ -16,6 +16,16 @@ class Quest
 
   belongs_to  :patron
 
+  def points
+    quest =
+    description = patron.branch.quest_descriptions.find(quest_description_id)
+    if description.approvals_required_for_points <= approvals.count
+      description.points
+    else
+      0
+    end
+  end
+
 private
   def log_activity
     return true if self.activity

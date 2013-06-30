@@ -2,7 +2,6 @@
 
 ## Endpoints for /api/v1:
 
-
 ###  \* indicate endpoints that are token protected
 ###  \! indicate endpoints that are in development
 
@@ -27,7 +26,7 @@ POST  /devices                :device_id -> 200: :user, :token
 *GET   /people                           -> 200: [:person]
 *GET   /people/:id                       -> 200: :person
 *GET   /people/:id/branches              -> 200: [:branch]
-  -*GET!  /people/:id/branches/:id          -> 200: [:branch]    (perspective)
+*GET!  /people/:id/branches/:id          -> 200: [:branch]    (perspective)
 *GET   /people/:id/businesses            -> 200: [:business]
   -*GET!  /people/:id/businesses/:id        -> 200: [:business]  (perspective)
 *GET   /people/:id/quests                -> 200: [:quest]

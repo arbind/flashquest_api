@@ -6,6 +6,14 @@ json.type branch.type || branch.business.type
 json.url branch.url   || branch.business.url
 json.url branch.phone || branch.business.phone
 
+@person = @patron.person if @patron and @person.nil?
+@patron = branch.patrons.where(person_id: @person.id).first if @person and @patron.nil?
+
+json.points @person.points_at_business(branch.business) if @person
+
+json.points_at_branch @person.points_at_business(branch.business) if @person
+json.points_at_branch @patron.person.points_at_business(branch.business) if @patron
+
 json.extract! branch, :address, :address2, :city, :state, :zip, :neighborhood
 
 json.quest_descriptions do

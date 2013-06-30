@@ -9,6 +9,11 @@ class Reward
 
   belongs_to  :patron
 
+  def points
+    description = patron.branch.reward_descriptions.find(reward_description_id)
+    description.points_required
+  end
+
 private
   def log_activity
     return true if self.activity
