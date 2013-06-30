@@ -84,7 +84,7 @@ POST  /devices                :device_id -> 200: :user, :token
 *GET   /businesses/:id/patrons           -> 200: [:patron]
 *GET   /businesses/:id/people            -> 200: [:person]
 *GET   /businesses/:id/quests?type=:type -> 200: [:quest]
-  -*GET   /businesses/:id/rewards           -> 200: [:reward]
+*GET   /businesses/:id/rewards           -> 200: [:reward]
   -*GET!  /businesses/:id/activities        -> 200: [:activity]
 ````
 
