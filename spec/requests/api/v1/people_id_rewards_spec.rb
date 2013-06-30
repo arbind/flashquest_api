@@ -9,6 +9,6 @@ describe "/people/:id/rewards", type: :request do
 
   context :GET do
     let (:subject)    { person.rewards }
-    it_behaves_like   "an array endpoint", :get, :quest
+    it_behaves_like   "an array endpoint", :get, :reward
   end
 end

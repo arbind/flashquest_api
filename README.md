@@ -26,13 +26,13 @@ POST  /devices                :device_id -> 200: :user, :token
 ````
 *GET   /people                           -> 200: [:person]
 *GET   /people/:id                       -> 200: :person
-  -*GET!  /people/:id/activities            -> 200: [:activity]  (person's)
+*GET!  /people/:id/activities            -> 200: [:activity]  (person's)
 *GET   /people/:id/branches              -> 200: [:branch]
   -*GET!  /people/:id/branches/:id          -> 200: [:branch]    (perspective)
 *GET!  /people/:id/businesses            -> 200: [:business]
   -*GET!  /people/:id/businesses/:id        -> 200: [:business]  (perspective)
 *GET   /people/:id/quests                -> 200: [:quest]
-  -*GET   /people/:id/rewards               -> 200: [:reward]
+*GET   /people/:id/rewards               -> 200: [:reward]
 ````
 
 ### Branches
