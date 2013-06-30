@@ -53,7 +53,7 @@ POST  /devices                :device_id -> 200: :user, :token
 ### Patrons
 ````
 *GET   /patrons                          -> 200: [:patron]
-  -*GET   /patrons/:id                      -> 200: :patron
+*GET   /patrons/:id                      -> 200: :patron
   -*GET!  /patrons/:id/activities           -> 200: [:activity]  (of patron)
   -*GET   /patrons/:id/quests?type=:type    -> 200: [:quest]
   -*GET   /patrons/:id/rewards              -> 200: [:reward]
