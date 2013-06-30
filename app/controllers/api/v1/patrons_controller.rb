@@ -1,4 +1,5 @@
 class Api::V1::PatronsController < Api::V1::ApplicationController
+  before_action :ensure_access_token
   before_action :set_patron,  only: [:show]
   before_action :set_patrons, only: [:index]
 

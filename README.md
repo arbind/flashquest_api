@@ -39,8 +39,8 @@ POST  /devices                :device_id -> 200: :user, :token
 
 ### Branches
 ````
-  +*GET   /branches                         -> 200: [:branch]
-  +*GET   /branches/:id                     -> 200: :branch      (perspective)
+*GET   /branches                         -> 200: [:branch]
+*GET   /branches/:id                     -> 200: :branch      (perspective)
   -*GET   /branches/:id/patrons             -> 200: [:patron]
   -*GET   /branches/:id/people              -> 200: [:person]
   +*GET!  /branches/:id/activity            -> 200: [:activity]
