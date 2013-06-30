@@ -66,8 +66,8 @@ POST  /devices                :device_id -> 200: :user, :token
   +*DEL   /quests/:id                       -> 204:
   +*POST! /quests/:id/approvals             -> 200: :quest
   +*DEL!  /quests/:id/approvals/:id         -> 204: :quest
-  +*POST  /quests/:id/comments     :comment -> 200: :quest
-  +*DEL   /quests/:id/comments/:id          -> 204: :quest
+*POST  /quests/:id/comments     :comment -> 200: :quest
+*DEL   /quests/:id/comments/:id          -> 204: :quest
 ````
 
 ### Rewards
