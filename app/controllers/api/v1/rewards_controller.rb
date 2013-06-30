@@ -5,7 +5,7 @@ class Api::V1::RewardsController < Api::V1::ApplicationController
 
   # GET /rewards
   # GET /people/1/rewards
-  # GET /patron/1/rewards
+  # GET /patrons/1/rewards
   # GET /branches/1/rewards
   # GET /businesses/1/rewards
   def index
@@ -29,5 +29,4 @@ class Api::V1::RewardsController < Api::V1::ApplicationController
     def set_reward
       @reward = Reward.find(params[:id])
     end
-
 end
