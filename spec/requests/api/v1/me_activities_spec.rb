@@ -5,7 +5,7 @@ describe "/me/activity", :type => :request do
   include_context "current user"
   include_context "activity"
 
-  let (:http_path)  { api_v1_me_activity_path }
+  let (:http_path)  { api_v1_me_activities_path }
 
   context :GET do
     let (:subject)  { me.activities }

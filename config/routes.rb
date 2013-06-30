@@ -8,15 +8,15 @@ FlashquestApi::Application.routes.draw do
     get   'me', to: 'me#index',  as: :me,         defaults: { format: 'json' }
     patch 'me', to: 'me#update', as: :my_profile, defaults: { format: 'json' }
     get 'me/feed', to: 'me#feed', as: :me_feed, defaults: { format: 'json' }
-    get 'me/activity', to: 'me#activity', as: :me_activity, defaults: { format: 'json' }
+    get 'me/activities', to: 'me#activities', as: :me_activities, defaults: { format: 'json' }
 
-    resources :activity,        only: [:show], defaults: { format: 'json' }
+    resources :activities,        only: [:show], defaults: { format: 'json' }
 
     resources :businesses,      only: [:index, :show], defaults: { format: 'json' } do
       resources :branches,      only: [:index], defaults: { format: 'json' }
       resources :patrons,       only: [:index], defaults: { format: 'json' }
       resources :people,        only: [:index], defaults: { format: 'json' }
-      resources :activity,      only: [:index], defaults: { format: 'json' }
+      resources :activities,      only: [:index], defaults: { format: 'json' }
       resources :quests,        only: [:index], defaults: { format: 'json' }
       resources :photoquests,   only: [:index], controller: :quests, defaults: { format: 'json', type: 'photo' }
       resources :commentquests, only: [:index], controller: :quests, defaults: { format: 'json', type: 'comment' }
@@ -25,7 +25,7 @@ FlashquestApi::Application.routes.draw do
 
     resources :people, only: [:index, :show], defaults: { format: 'json' } do
       resources :feed,          only: [:index], defaults: { format: 'json' }
-      resources :activity,      only: [:index], defaults: { format: 'json' }
+      resources :activities,    only: [:index], defaults: { format: 'json' }
       resources :branches,      only: [:index, :show], defaults: { format: 'json' }
       resources :businesses,    only: [:index], defaults: { format: 'json' }
       resources :quests,        only: [:index], defaults: { format: 'json' }
@@ -39,7 +39,7 @@ FlashquestApi::Application.routes.draw do
     resources :branches,        only: [:index, :show], defaults: { format: 'json' } do
       resources :patrons,       only: [:index], defaults: { format: 'json' }
       resources :people,        only: [:index], defaults: { format: 'json' }
-      resources :activity,      only: [:index], defaults: { format: 'json' }
+      resources :activities,      only: [:index], defaults: { format: 'json' }
       resources :quests,        only: [:index], defaults: { format: 'json' }
       resources :photoquests,   only: [:index], controller: :quests, defaults: { format: 'json', type: 'photo' }
       resources :commentquests, only: [:index], controller: :quests, defaults: { format: 'json', type: 'comment' }
@@ -49,7 +49,7 @@ FlashquestApi::Application.routes.draw do
     end
 
     resources :patrons,         only: [:index, :show], defaults: { format: 'json' } do
-      resources :activity,      only: [:index], defaults: { format: 'json' }
+      resources :activities,      only: [:index], defaults: { format: 'json' }
       resources :quests,        only: [:index], defaults: { format: 'json' }
       resources :photoquests,   only: [:index], controller: :quests, defaults: { format: 'json', type: 'photo' }
       resources :commentquests, only: [:index], controller: :quests, defaults: { format: 'json', type: 'comment' }

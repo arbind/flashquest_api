@@ -16,7 +16,7 @@ class Api::V1::MeController < Api::V1::ApplicationController
     @activities = Activity.all
   end
 
-  def activity
+  def activities
     @activities = @current_user.activities
   end
 

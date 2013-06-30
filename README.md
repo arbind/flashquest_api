@@ -19,14 +19,14 @@ POST  /devices                :device_id -> 200: :user, :token
 *GET    /me                               -> 200: :person
 *PATCH! /me   :name, :twitter, :facebook -> 200: :person
 *GET!  /me/feed                          -> 200: [:activity]  (of friends)
-*GET!  /me/activity                      -> 200: [:activity]  (mine)
+*GET!  /me/activities                    -> 200: [:activity]  (mine)
 ````
 
 ### People
 ````
 *GET   /people                           -> 200: [:person]
 *GET   /people/:id                       -> 200: :person
-  -*GET!  /people/:id/activity              -> 200: [:activity]  (person's)
+  -*GET!  /people/:id/activities            -> 200: [:activity]  (person's)
 *GET   /people/:id/branches              -> 200: [:branch]
   -*GET!  /people/:id/branches/:id          -> 200: [:branch]    (perspective)
 *GET!  /people/:id/businesses            -> 200: [:business]
@@ -41,7 +41,7 @@ POST  /devices                :device_id -> 200: :user, :token
 *GET   /branches/:id                     -> 200: :branch      (perspective)
 *GET   /branches/:id/patrons             -> 200: [:patron]
 *GET   /branches/:id/people              -> 200: [:person]
-*GET!  /branches/:id/activity            -> 200: [:activity]
+*GET!  /branches/:id/activities          -> 200: [:activity]
 *GET   /branches/:id/quests?type=:type   -> 200: [:quest]
   +*GET   /branches/:id/rewards             -> 200: [:reward]
   +*POST! /branches/:id/quest_descriptions/:id/quests
@@ -54,7 +54,7 @@ POST  /devices                :device_id -> 200: :user, :token
 ````
   -*GET   /patrons                          -> 200: [:patron]
   -*GET   /patrons/:id                      -> 200: :patron
-  -*GET!  /patrons/:id/activity             -> 200: [:activity]  (of patron)
+  -*GET!  /patrons/:id/activities           -> 200: [:activity]  (of patron)
   -*GET   /patrons/:id/quests?type=:type    -> 200: [:quest]
   -*GET   /patrons/:id/rewards              -> 200: [:reward]
 ````
@@ -84,7 +84,7 @@ POST  /devices                :device_id -> 200: :user, :token
   -*GET   /businesses/:id/patrons           -> 200: [:patron]
   -*GET   /businesses/:id/people            -> 200: [:person]
   -*GET!  /businesses/:id/feed              -> 200: [:activity]
-  -*GET!  /businesses/:id/activity          -> 200: [:activity]
+  -*GET!  /businesses/:id/activities        -> 200: [:activity]
   -*GET   /businesses/:id/quests?type=:type -> 200: [:quest]
   -*GET   /businesses/:id/photoquests       -> 200: [:quest]
   -*GET   /businesses/:id/commentquests     -> 200: [:quest]

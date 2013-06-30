@@ -1,4 +1,4 @@
-class Api::V1::ActivityController < Api::V1::ApplicationController
+class Api::V1::ActivitiesController < Api::V1::ApplicationController
   before_action :ensure_access_token
   before_action :set_context, only: [:index]
   before_action :set_activity, only: [:show]
