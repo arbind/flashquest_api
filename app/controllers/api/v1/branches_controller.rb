@@ -15,9 +15,9 @@ class Api::V1::BranchesController < Api::V1::ApplicationController
 
   private
     def set_branches
-      @context = @business = Business.find(params[:business_id]) if params[:business_id]
       @context = @person   = Person.find(params[:person_id]) if params[:person_id]
-      @branches  = @context.branches if @context
+      @context = @business = Business.find(params[:business_id]) if params[:business_id]
+      @branches = @context.branches if @context
       @branches ||= Branch.all
     end
 
