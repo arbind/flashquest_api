@@ -1,8 +1,6 @@
 require "spec_helper"
 
 describe "/quests", type: :request do
-  include_context "json response"
-  include_context "current user"
   include_context "activity"
   let (:http_path)    { api_v1_quests_path }
 

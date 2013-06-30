@@ -1,8 +1,6 @@
 require "spec_helper"
 
 describe "/branches/:id/activities", type: :request do
-  include_context "json response"
-  include_context "current user"
   include_context "activity"
 
   let (:branch)     { Branch.all.second }
