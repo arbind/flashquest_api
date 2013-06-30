@@ -43,7 +43,7 @@ POST  /devices                :device_id -> 200: :user, :token
 *GET   /branches/:id/people              -> 200: [:person]
 *GET!  /branches/:id/activities          -> 200: [:activity]
 *GET   /branches/:id/quests?type=:type   -> 200: [:quest]
-  +*GET   /branches/:id/rewards             -> 200: [:reward]
+*GET   /branches/:id/rewards             -> 200: [:reward]
   +*POST! /branches/:id/quest_descriptions/:id/quests
                                  :review -> 200: :quest
   +*POST! /branches/:id/reward_descriptions/:id/rewards
