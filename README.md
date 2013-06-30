@@ -62,7 +62,7 @@ POST  /devices                :device_id -> 200: :user, :token
 ````
 *GET   /quests                           -> 200: [:quest]
 *GET   /quests/:id                       -> 200: :quest
-  +*DEL   /quests/:id                       -> 204:
+*DEL   /quests/:id                       -> 204:
   +*POST! /quests/:id/approvals             -> 200: :quest
   +*DEL!  /quests/:id/approvals/:id         -> 204: :quest
 *POST  /quests/:id/comments     :comment -> 200: :quest

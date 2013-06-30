@@ -58,7 +58,7 @@ FlashquestApi::Application.routes.draw do
       resources :rewards,       only: [:index], defaults: { format: 'json' }
     end
 
-    resources :quests, only: [:index, :show], defaults: { format: 'json' } do
+    resources :quests, only: [:index, :show, :destroy], defaults: { format: 'json' } do
       resources :approvals,     only: [:index], defaults: { format: 'json' }
       resources :comments,      only: [:index, :create, :destroy], defaults: { format: 'json' }
     end

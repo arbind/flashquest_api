@@ -7,8 +7,8 @@ module JsonResponseHelpers
   end
 
   shared_examples_for "a json item" do |name|
-    it "responds with 200" do
-      expect(response.status).to be 200
+    it "responds with 20x" do
+      expect(response.status).to be_within(100).of 200
     end
 
     it "returns the item's path" do
@@ -17,8 +17,8 @@ module JsonResponseHelpers
   end
 
   shared_examples_for 'a json list' do |name|
-    it "responds with 200" do
-      expect(response.status).to be 200
+    it "responds with 20x" do
+      expect(response.status).to be_within(100).of 200
     end
     it "returns an array" do
       expect(json_data).to be_an Array

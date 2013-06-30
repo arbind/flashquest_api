@@ -1,6 +1,6 @@
 class Api::V1::QuestsController < Api::V1::ApplicationController
   before_action :ensure_access_token
-  before_action :set_quest,  only: [:show]
+  before_action :set_quest,  only: [:show, :destroy]
   before_action :set_quests, only: [:index]
 
   # GET /quests
@@ -14,6 +14,14 @@ class Api::V1::QuestsController < Api::V1::ApplicationController
   # GET /quests/1
   def show
   end
+
+  # DELETE /quests/:id
+  def destroy
+    @quest.destroy
+    p @quest
+    render json: { meta: {}, data: {} }.to_json, status: 205
+  end
+
 
   private
     def set_quests
