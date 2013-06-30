@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Comments", :type => :request do
   include_context "json response"
-  include_context "access token"
+  include_context "current user"
 
   let (:valid_attributes)   {
     {

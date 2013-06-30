@@ -47,7 +47,7 @@ describe "Devices", :type => :request do
     end
 
     context "from a returning device:" do
-      include_context "access token"
+      include_context "current user"
       let (:valid_attributes)   { { identifier: current_device_identifier } }
       before { access_token }
       before { post http_path, http_params, nil }

@@ -2,14 +2,12 @@ require 'spec_helper'
 
 describe "/me", :type => :request do
   include_context "json response"
-  include_context "access token"
+  include_context "current user"
   let(:subject) { me }
 
   context :GET do
     let (:http_path)  { api_v1_me_path }
-    before { get http_path, nil, access_token_headers }
-    it_behaves_like 'a protected endpoint', :get
-    it_behaves_like 'a json item for', :person
+    it_behaves_like "an item endpoint", :get, :person
   end
 
   context :PATCH do
@@ -38,18 +36,20 @@ describe "/me", :type => :request do
       }
     }
     let (:http_params)  { {me: valid_attributes} }
-    before { expect(subject.attributes).to_not include valid_attributes.slice("name") }
-    before { patch http_path, http_params, access_token_headers }
-    before { subject.reload }
-    it_behaves_like 'a protected endpoint', :patch
-    it_behaves_like 'a json item for', :person
-    it "responds with an updated profile" do
-      expect(json_data).to include valid_attributes.slice("name")
-      expect(json_twitter["screen_name"]).to eq twitter_screen_name
-      expect(json_facebook["username"]).to eq facebook_username
-    end
-    it "updates the current user's profile" do
-      expect(subject.attributes).to include valid_attributes.slice("name")
+    it_behaves_like "an item endpoint", :patch, :person
+
+    describe "updates my profile" do
+      before { expect(subject.attributes).to_not include valid_attributes.slice("name") }
+      before { patch http_path, http_params, access_token_headers }
+      before { subject.reload }
+      it "responds with an updated profile" do
+        expect(json_data).to include valid_attributes.slice("name")
+        expect(json_twitter["screen_name"]).to eq twitter_screen_name
+        expect(json_facebook["username"]).to eq facebook_username
+      end
+      it "updates the current user's profile" do
+        expect(subject.attributes).to include valid_attributes.slice("name")
+      end
     end
   end
 end
