@@ -72,8 +72,8 @@ POST  /devices                :device_id -> 200: :user, :token
 
 ### Rewards
 ````
-  +*GET   /rewards                          -> 200: [:reward]
-  +*GET   /rewards/:id                      -> 200: :reward
+*GET   /rewards                          -> 200: [:reward]
+*GET   /rewards/:id                      -> 200: :reward
 ````
 
 ### Businesses
