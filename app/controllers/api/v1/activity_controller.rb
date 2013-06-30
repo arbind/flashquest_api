@@ -1,11 +1,12 @@
-class Api::V1::ActivitiesController < Api::V1::ApplicationController
+class Api::V1::ActivityController < Api::V1::ApplicationController
   before_action :ensure_access_token
   before_action :set_context, only: [:index]
   before_action :set_activity, only: [:show]
 
-  # GET /people/1/activities
-  # GET /branches/1/activities
-  # GET /businesses/1/activities
+  # GET /people/1/activity
+  # GET /branches/1/activity
+  # GET /patrons/1/activity
+  # GET /businesses/1/activity
   def index
   end
 
@@ -16,9 +17,10 @@ class Api::V1::ActivitiesController < Api::V1::ApplicationController
   private
     def set_context
       @context = @person   = Person.find(params[:person_id]) if params[:person_id]
-      @context = @branches = Branch.find(params[:branch_id]) if params[:branch_id]
+      @context = @branch = Branch.find(params[:branch_id]) if params[:branch_id]
       @context = @business = Business.find(params[:business_id]) if params[:business_id]
-      @activities = @context.actvities if @context
+      @context = @patron = Patron.find(params[:patron_id]) if params[:patron_id]
+      @activities = @context.activities if @context
       @activities ||= Activity.all
     end
 

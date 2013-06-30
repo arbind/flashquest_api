@@ -1,4 +1,5 @@
 class Api::V1::RewardsController < Api::V1::ApplicationController
+  before_action :ensure_access_token
   before_action :set_reward, only: [:show]
   before_action :set_rewards, only: [:index]
 

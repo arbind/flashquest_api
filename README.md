@@ -32,8 +32,6 @@ POST  /devices                :device_id -> 200: :user, :token
 *GET!  /people/:id/businesses            -> 200: [:business]
   -*GET!  /people/:id/businesses/:id        -> 200: [:business]  (perspective)
 *GET   /people/:id/quests                -> 200: [:quest]
-  -*GET   /people/:id/photoquests           -> 200: [:quest]
-  -*GET   /people/:id/commentquests         -> 200: [:quest]
   -*GET   /people/:id/rewards               -> 200: [:reward]
 ````
 
@@ -43,10 +41,8 @@ POST  /devices                :device_id -> 200: :user, :token
 *GET   /branches/:id                     -> 200: :branch      (perspective)
 *GET   /branches/:id/patrons             -> 200: [:patron]
 *GET   /branches/:id/people              -> 200: [:person]
-  +*GET!  /branches/:id/activity            -> 200: [:activity]
+*GET!  /branches/:id/activity            -> 200: [:activity]
 *GET   /branches/:id/quests?type=:type   -> 200: [:quest]
-  -*GET   /branches/:id/photoquests         -> 200: [:quest]
-  -*GET   /branches/:id/commentquests       -> 200: [:quest]
   +*GET   /branches/:id/rewards             -> 200: [:reward]
   +*POST! /branches/:id/quest_descriptions/:id/quests
                                  :review -> 200: :quest
@@ -60,8 +56,6 @@ POST  /devices                :device_id -> 200: :user, :token
   -*GET   /patrons/:id                      -> 200: :patron
   -*GET!  /patrons/:id/activity             -> 200: [:activity]  (of patron)
   -*GET   /patrons/:id/quests?type=:type    -> 200: [:quest]
-  -*GET   /patrons/:id/photoquests          -> 200: [:quest]
-  -*GET   /patrons/:id/commentquests        -> 200: [:quest]
   -*GET   /patrons/:id/rewards              -> 200: [:reward]
 ````
 
