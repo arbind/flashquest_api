@@ -5,7 +5,7 @@ describe "/branches/:id/patrons", type: :request do
   include_context "access token"
 
   let!(:branches)     { create_list :branch, 3, :with_patrons }
-  let (:branch)       { Branch.all.second }
+  let (:branch)       { branches.second }
   let (:http_path)    { api_v1_branch_patrons_path(branch) }
 
   context :GET do
