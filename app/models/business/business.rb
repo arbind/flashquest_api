@@ -21,6 +21,9 @@ class Business
     Person.in id: people_ids
   end
 
+  def activities
+    Activity.in person_id: people_ids
+  end
 
   def patrons() collect_from_branch(:patrons) end
   def patron_ids() collect_from_branch(:patron_ids) end
