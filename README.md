@@ -17,9 +17,9 @@ POST  /devices                :device_id -> 200: :user, :token
 ### Current User
 ````
 *GET    /me                               -> 200: :person
-*PATCH! /me   :name, :twitter, :facebook -> 200: :person
-*GET!  /me/feed                          -> 200: [:activity]  (of friends)
-*GET!  /me/activities                    -> 200: [:activity]  (mine)
+*PATCH! /me    :name, :twitter, :facebook -> 200: :person
+*GET!   /me/feed                          -> 200: [:activity]  (of friends)
+*GET!   /me/activities                    -> 200: [:activity]  (mine)
 ````
 
 ### People
@@ -61,8 +61,8 @@ POST  /devices                :device_id -> 200: :user, :token
 
 ### Quests
 ````
-  +*GET   /quests                           -> 200: [:quest]
-  +*GET   /quests/:id                       -> 200: :quest
+*GET   /quests                           -> 200: [:quest]
+*GET   /quests/:id                       -> 200: :quest
   +*DEL   /quests/:id                       -> 204:
   +*POST! /quests/:id/approvals             -> 200: :quest
   +*DEL!  /quests/:id/approvals/:id         -> 204: :quest
