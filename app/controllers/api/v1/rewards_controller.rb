@@ -15,6 +15,15 @@ class Api::V1::RewardsController < Api::V1::ApplicationController
   def show
   end
 
+  # POST /branches/:id/reward_descriptions/:id/rewards
+  def create
+    @branch = Branch.find(params[:branch_id])
+    @patron = @current_user.patronize @branch
+    @reward_description = @branch.reward_descriptions.find(params[:reward_description_id])
+    @reward = @patron.redeem_reward @reward_description
+    render '/api/v1/rewards/show'
+  end
+
   private
     def set_rewards
       @context = @business = Business.find(params[:business_id]) if params[:business_id]

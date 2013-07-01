@@ -2,7 +2,7 @@
 
 ## Endpoints for /api/v1:
 
-###  \* indicate endpoints that are token protected
+###  \* indicates token protected endpoints
 
 ### Device Access Token
 ````
@@ -44,7 +44,7 @@ POST  /devices                :device_id -> 200: :user, :token
 *GET   /branches/:id/activities          -> 200: [:activity]
 *POST  /branches/:id/quest_descriptions/:id/quests
                                  :review -> 200: :quest
-  +*POST  /branches/:id/reward_descriptions/:id/rewards
+*POST  /branches/:id/reward_descriptions/:id/rewards
                                          -> 200: [:reward]
 ````
 

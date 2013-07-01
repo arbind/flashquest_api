@@ -20,6 +20,9 @@ FlashquestApi::Application.routes.draw do
     post '/branches/:branch_id/quest_descriptions/:quest_description_id/quests',
       to: 'quests#create', as: :new_quest, defaults: { format: 'json' }
 
+    post '/branches/:branch_id/reward_descriptions/:reward_description_id/rewards',
+      to: 'rewards#create', as: :new_reward, defaults: { format: 'json' }
+
     resources :activities,        only: [:show], defaults: { format: 'json' }
 
     resources :businesses,      only: [:index, :show], defaults: { format: 'json' } do
