@@ -5,10 +5,20 @@ FlashquestApi::Application.routes.draw do
   namespace :api do namespace :v1 do
     resources :devices,         only: [:create], defaults: { format: 'json' }
 
-    get   'me', to: 'me#index',  as: :me,         defaults: { format: 'json' }
-    patch 'me', to: 'me#update', as: :my_profile, defaults: { format: 'json' }
-    get 'me/feed', to: 'me#feed', as: :me_feed, defaults: { format: 'json' }
-    get 'me/activities', to: 'me#activities', as: :me_activities, defaults: { format: 'json' }
+    get   'me',
+      to: 'me#index',  as: :me,         defaults: { format: 'json' }
+
+    patch 'me',
+      to: 'me#update', as: :my_profile, defaults: { format: 'json' }
+
+    get 'me/feed',
+      to: 'me#feed', as: :me_feed, defaults: { format: 'json' }
+
+    get 'me/activities',
+      to: 'me#activities', as: :me_activities, defaults: { format: 'json' }
+
+    post '/branches/:branch_id/quest_descriptions/:quest_description_id/quests',
+      to: 'quests#create', as: :new_quest, defaults: { format: 'json' }
 
     resources :activities,        only: [:show], defaults: { format: 'json' }
 

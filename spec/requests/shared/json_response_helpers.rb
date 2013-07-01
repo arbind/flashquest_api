@@ -12,7 +12,11 @@ module JsonResponseHelpers
     end
 
     it "returns the item's path" do
-      expect(json_data["#{name}_path"]).to eq send( :"api_v1_#{name}_path", subject)
+      expect(json_data["#{name}_path"]).to be_present
+      if subject
+        path_id = send( :"api_v1_#{name}_path", subject)
+        expect(json_data["#{name}_path"]).to eq path_id
+      end
     end
   end
 

@@ -12,7 +12,7 @@ json.partial! '1/quest_description', quest_description: quest_description
 
 if quest.review.present?
   json.review do
-    json.partial! '1/review', review: quest.review
+    json.extract! quest.review, :rating, :headline, :text, :photo_url
   end
 end
 
