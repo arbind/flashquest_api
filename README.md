@@ -7,9 +7,6 @@
 ### Device Access Token
 ````
 POST  /devices                :device_id -> 200: :user, :token
-  -*POST! /devices/finished-launching        -> 202:
-  -*POST! /devices/became-active             -> 202:
-  -*POST! /devices/did-resign                -> 202:
 ````
 
 ### Current User
@@ -84,6 +81,13 @@ POST  /devices                :device_id -> 200: :user, :token
 *GET   /businesses/:id/quests?type=:type -> 200: [:quest]
 *GET   /businesses/:id/rewards           -> 200: [:reward]
 *GET   /businesses/:id/activities        -> 200: [:activity]
+````
+
+### Usage (+++ todo)
+````
+  -*POST! /devices/finished-launching        -> 202:
+  -*POST! /devices/became-active             -> 202:
+  -*POST! /devices/did-resign                -> 202:
 ````
 
 ## Start Server:
