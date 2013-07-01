@@ -3,7 +3,6 @@
 ## Endpoints for /api/v1:
 
 ###  \* indicate endpoints that are token protected
-###  \! indicate endpoints that are in development
 
 ### Device Access Token
 ````
@@ -26,9 +25,9 @@ POST  /devices                :device_id -> 200: :user, :token
 *GET   /people                           -> 200: [:person]
 *GET   /people/:id                       -> 200: :person
 *GET   /people/:id/branches              -> 200: [:branch]
-*GET!  /people/:id/branches/:id          -> 200: [:branch]    (perspective)
+*GET   /people/:id/branches/:id          -> 200: [:branch]    (perspective)
 *GET   /people/:id/businesses            -> 200: [:business]
-*GET!  /people/:id/businesses/:id        -> 200: [:business]  (perspective)
+*GET   /people/:id/businesses/:id        -> 200: [:business]  (perspective)
 *GET   /people/:id/quests                -> 200: [:quest]
 *GET   /people/:id/rewards               -> 200: [:reward]
 *GET   /people/:id/activities            -> 200: [:activity]  (person's)
@@ -43,9 +42,9 @@ POST  /devices                :device_id -> 200: :user, :token
 *GET   /branches/:id/quests?type=:type   -> 200: [:quest]
 *GET   /branches/:id/rewards             -> 200: [:reward]
 *GET   /branches/:id/activities          -> 200: [:activity]
-*POST! /branches/:id/quest_descriptions/:id/quests
+*POST  /branches/:id/quest_descriptions/:id/quests
                                  :review -> 200: :quest
-  +*POST! /branches/:id/reward_descriptions/:id/rewards
+  +*POST  /branches/:id/reward_descriptions/:id/rewards
                                          -> 200: [:reward]
 ````
 
@@ -63,8 +62,8 @@ POST  /devices                :device_id -> 200: :user, :token
 *GET   /quests                           -> 200: [:quest]
 *GET   /quests/:id                       -> 200: :quest
 *DEL   /quests/:id                       -> 204:
-  +*POST! /quests/:id/approvals             -> 200: :quest
-  +*DEL!  /quests/:id/approvals/:id         -> 204: :quest
+*POST  /quests/:id/approvals             -> 200: :quest
+*DEL   /quests/:id/approvals/:id         -> 204: :quest
 *POST  /quests/:id/comments     :comment -> 200: :quest
 *DEL   /quests/:id/comments/:id          -> 204: :quest
 ````
