@@ -1,41 +1,30 @@
 require 'spec_helper'
 
-describe "Comments", :type => :request do
+describe "/quests/:id/comments", :type => :request do
   include_context "json response"
   include_context "current user"
+  include_context "activity"
 
+  let (:quest)              { Comment.all.second.quest }
+  let (:comments)           { quest.comments }
+  let!(:num_comments)       { comments.count }
   let (:valid_attributes)   {
     {
       text: 'a note',
     }
   }
-
-  let (:person)             { create :person }
-  let (:business)           { create :business }
-  let (:branch)             { business.branches.create }
-  let (:quest_description)  { branch.quest_descriptions.create }
-  let (:patron)             { person.patronize branch }
-  let (:quest)              { patron.start_quest quest_description }
-  let (:comments)           {
-    create_list :comment, 5, person: person, quest: quest
-  }
-  let!(:num_comments)       { comments.count }
-
   let (:json_comments)      { json_data['comments']}
 
-  describe "POST /quests/:id/comments" do
+  describe :POST do
     let (:http_path)          { api_v1_quest_comments_path(quest) }
     let (:http_params)        { {comment: valid_attributes} }
+    let (:subject)            { nil }
+    it_behaves_like 'an item endpoint', :post, :quest
 
-    it_behaves_like 'a protected endpoint', :post
-
-    context "for the current user" do
+    context do
       before { post http_path, http_params, access_token_headers }
       before { quest.reload }
-      it "responds with 200" do
-        expect(response.status).to be 200
-      end
-      it "adds a comment" do
+      it "adds a comment to the quest" do
         expect(quest.comments.count).to be num_comments + 1
         expect(json_comments.length).to be num_comments + 1
       end
