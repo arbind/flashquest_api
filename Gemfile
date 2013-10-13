@@ -22,7 +22,7 @@ group :doc do # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
-gem 'debugger', group: [:development, :test]
+# gem 'debugger', group: [:development, :test]
 
 gem 'rspec-rails', group: [:development, :test]
 gem 'database_cleaner', group: :test
