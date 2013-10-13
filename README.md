@@ -6,7 +6,7 @@
 
 ### Device Access Token
 ````
-POST  /devices                :device_id -> 200: :user, :token
+POST  /devices                :identifier -> 200: :user, :token
 ````
 
 ### Current User
