@@ -1,10 +1,14 @@
-json.reward_path api_v1_reward_path reward
-json.partial! '1/patron_ids', patron: reward.patron
+json.id reward.id.to_s
 
-branch = reward.patron.branch
-reward_description = branch.reward_descriptions.find(reward.reward_description_id)
+patron = reward.patron
+json.patron_id    patron.id.to_s          if patron
+json.person_id    patron.person.id.to_s   if patron.person
+json.branch_id    patron.branch.id.to_s   if patron.branch
+json.business_id  patron.branch.business.id.to_s if patron.branch and patron.branch.business
 
-json.extract! reward_description, :title, :description
+reward_description = patron.branch.reward_descriptions.find(reward.reward_description_id)
+
+json.extract! reward_description, :active, :title, :description
 
 json.points reward_description.points_required
 

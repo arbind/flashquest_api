@@ -11,11 +11,10 @@ module JsonResponseHelpers
       expect(response.status).to be_within(100).of 200
     end
 
-    it "returns the item's path" do
-      expect(json_data["#{name}_path"]).to be_present
+    it "returns the item id" do
+      expect(json_data["id"]).to be_present
       if subject
-        path_id = send( :"api_v1_#{name}_path", subject)
-        expect(json_data["#{name}_path"]).to eq path_id
+        expect(json_data["id"]).to eq subject.id.to_s
       end
     end
   end
@@ -33,7 +32,7 @@ module JsonResponseHelpers
     it "returns a list of specific items" do
       expect(json_data).to have_at_least(1).items
       json_data.each do |json_item|
-        expect(json_item["#{name}_path"]).to be_present
+        expect(json_item["id"]).to be_present
       end
     end
   end

@@ -1,5 +1,10 @@
-json.quest_path api_v1_quest_path quest
-json.partial! '1/patron_ids', patron: quest.patron
+json.id  quest.id.to_s
+
+patron = quest.patron
+json.patron_id  quest.patron.id.to_s if quest.patron
+json.person_id    patron.person.id.to_s   if patron.person
+json.branch_id    patron.branch.id.to_s   if patron.branch
+json.business_id  patron.branch.business.id.to_s if patron.branch and patron.branch.business
 
 json.status quest.status
 json.num_approvals quest.approvals.count
@@ -8,7 +13,7 @@ json.num_comments quest.comments.count
 branch = quest.patron.branch
 quest_description = branch.quest_descriptions.find(quest.quest_description_id)
 
-json.partial! '1/quest_description', quest_description: quest_description
+json.extract! quest_description, :active, :type, :name, :description, :points, :bonus_approval_points, :bonus_sharing_points, :approvals_required_for_points, :approvals_required_for_bonus
 
 if quest.review.present?
   json.review do

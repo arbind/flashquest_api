@@ -1,6 +1,7 @@
-json.activity_path api_v1_activity_path activity
-json.person_path api_v1_person_path activity.person if activity.person
-json.patron_path api_v1_person_path activity.person if activity.patron
+json.id activity.id.to_s
+
+json.person_id activity.person.id.to_s if activity.person
+json.patron_id activity.person.id.to_s if activity.patron
 
 json.type activity.type
 

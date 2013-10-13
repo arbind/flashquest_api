@@ -1,4 +1,4 @@
-json.id comment.id
+json.id comment.id.to_s
 
 json.extract! comment, :rating, :headline, :text, :photo_url, :status
 
