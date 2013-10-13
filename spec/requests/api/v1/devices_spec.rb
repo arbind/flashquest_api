@@ -10,9 +10,9 @@ shared_context "an access token request" do
     expect(json_access_token).to be_present
   end
 
-  it "responds with the person who owns the device" do
+  it "responds with the person who owns the device as me" do
     expect(json_data).to be_present
-    expect(json_data['person_path']).to be_present
+    expect(json_data['me']).to be_present
   end
 end
 
