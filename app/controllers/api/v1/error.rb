@@ -7,4 +7,7 @@ module Api::V1::Error
     def code() 401 end
   end
 
+  class NoAccessToken < ApiException
+    def code() 401 end
+  end
 end

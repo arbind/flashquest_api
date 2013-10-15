@@ -1,6 +1,7 @@
 class Api::V1::ApplicationController < ApplicationController
   layout 'api_v1'
   protect_from_forgery with: :null_session
+  skip_before_filter  :verify_authenticity_token # safe for API, as CSRF attack can only happen from browser
   rescue_from Exception, :with => :render_exception
 
   def render_exception(exception)
@@ -23,15 +24,14 @@ class Api::V1::ApplicationController < ApplicationController
 
   def ensure_access_token
     return @current_user if @current_user
-    device = Device.where(access_token_params).first
+    raise Api::V1::Error::NoAccessToken if access_token.empty?
+    device = Device.where(access_token: access_token).first
+    raise Api::V1::Error::Unauthorized if device.nil? or device.person.nil?
     @current_user = device.person
-    raise Api::V1::Error::Unauthorized if @current_user.nil?
-  rescue
-    raise Api::V1::Error::Unauthorized if device.nil?
   end
 
 private
-  def access_token_params
-    { access_token: request.headers[:HTTP_ACCESS_TOKEN] }
+  def access_token
+    request.headers[:HTTP_X_API_TOKEN].to_s.squish
   end
 end

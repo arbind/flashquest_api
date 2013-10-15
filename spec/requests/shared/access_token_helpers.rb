@@ -16,7 +16,7 @@ module AccessTokenHelpers
     let (:access_token_headers)      {
       access_token_headers = http_headers if defined? http_headers
       access_token_headers ||= {}
-      access_token_headers.merge!({ HTTP_ACCESS_TOKEN: access_token })
+      access_token_headers.merge!({ "X-API-Token" => access_token })
     }
   end
 end
