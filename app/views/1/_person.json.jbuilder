@@ -1,6 +1,6 @@
 json.id person.id.to_s
 
-json.extract! person, :name, :twitter, :facebook
+json.extract! person, :twitter, :facebook
 
 json.patrons do
   json.array! person.patrons do |patron|

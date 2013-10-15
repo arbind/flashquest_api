@@ -1,3 +1,5 @@
+json.person_id @current_user.id.to_s
 json.me do
-  json.partial! '1/person', person: @current_user
+  json.person_id @current_user.id.to_s 
+  json.extract! @current_user, :twitter, :facebook
 end
