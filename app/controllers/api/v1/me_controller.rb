@@ -7,6 +7,7 @@ class Api::V1::MeController < Api::V1::ApplicationController
   end
 
   #PATCH /me
+  #PUT /me/:id - :id is ignored
   def update
     @current_user.update_attributes me_params
     render :me

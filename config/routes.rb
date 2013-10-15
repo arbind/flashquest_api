@@ -17,6 +17,12 @@ FlashquestApi::Application.routes.draw do
     get 'me/activities',
       to: 'me#activities', as: :me_activities, defaults: { format: 'json' }
 
+    # Aliases for /me (to act like RESTfull resource)
+    # :id is simply ignored (since header token is used to find the Person)
+    get 'me/:id', to: 'me#index', defaults: { format: 'json' } # alias for GET /me
+    put 'me/:id', to: 'me#update', defaults: { format: 'json' } # alias for PATCH /me
+
+
     post '/branches/:branch_id/quest_descriptions/:quest_description_id/quests',
       to: 'quests#create', as: :new_quest, defaults: { format: 'json' }
 
