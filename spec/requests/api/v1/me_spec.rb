@@ -16,10 +16,12 @@ describe "/me", :type => :request do
     let (:http_path)        { api_v1_my_profile_path }
 
     let(:twitter_screen_name) { '_me.twitter' }
+    let(:followers_count)     { '20' }
     let (:twitter_profile)  {{
       "id" => 11,
       'name' => '_me',
-      'screen_name' => twitter_screen_name
+      'screen_name' => twitter_screen_name,
+      'followers_count' => followers_count
     }}
 
     let(:facebook_username)   { '_me.facebook' }
@@ -30,7 +32,6 @@ describe "/me", :type => :request do
       }}
     let (:valid_attributes)   {
       {
-        "name" => 'Tara',
         "twitter" => twitter_profile,
         "facebook" => facebook_profile,
       }
@@ -48,7 +49,7 @@ describe "/me", :type => :request do
         expect(json_facebook["username"]).to eq facebook_username
       end
       it "updates the current user's profile" do
-        expect(subject.attributes).to include valid_attributes.slice("name")
+        expect(subject.twitter['followers_count']).to eq followers_count
       end
     end
   end

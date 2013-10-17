@@ -24,7 +24,7 @@ class Api::V1::ApplicationController < ApplicationController
 
   def ensure_access_token
     return @current_user if @current_user
-    raise Api::V1::Error::NoAccessToken if access_token.empty?
+    raise Api::V1::Error::Unauthorized if access_token.empty?
     device = Device.where(access_token: access_token).first
     raise Api::V1::Error::Unauthorized if device.nil? or device.person.nil?
     @current_user = device.person

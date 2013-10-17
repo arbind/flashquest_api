@@ -23,69 +23,69 @@ class Api::V1::MeController < Api::V1::ApplicationController
 
 private
   def me_params
-    params.require(:me)
-      .permit(
-        :name,
-        twitter:  twitter_profile_params,
-        facebook: facebook_profile_params
-      )
+    params.require(:me).permit(twitter: twitter_params, facebook: facebook_params)
   end
 
-  def twitter_profile_params
-    [
-      :id,
-      :id_str,
-      :name,
-      :screen_name,
-      :lang,
-      :location,
-      :url,
-      :profile_image_url,
-      :profile_image_url_https,
-      :verified,
-      :statuses_count,
-      :followers_count,
-      :friends_count,
-      :geo_enabled,
-      :listed_count,
-      :notifications,
-      :time_zone,
-      :utc_offset,
-      :created_at,
-    ]
+  def twitter_params
+    %w(
+      id
+      name
+      screen_name
+      avatar
+      location
+      followers_count
+      friends_count
+      statuses_count
+    )
  end
 
-  def facebook_profile_params
-    [
-      :id,
-      :name,
-      :first_name,
-      :middle_name,
-      :last_name,
-      :gender,
-      :locale,
-      :languages,
-      :link,
-      :username,
-      :age_range,
-      :installed,
-      :timezone,
-      :updated_time,
-      :verified,
-      :bio,
-      :birthday,
-      :cover,
-      :currency,
-      :email,
-      :location,
-      :picture,
-      :relationship_status,
-      :religion,
-      :significant_other,
-      :website,
-    ]
+  def facebook_params
+    %w(
+      id
+      name
+      username
+      avatar
+      email
+    )
   end
-
 end
 
+### Some more facebook profile attributes:
+# first_name
+# last_name
+# gender
+# link
+# locale
+# timezone
 
+### Some more twitter profile attributes:
+# description
+# url
+# entities
+# protected
+# listed_count
+# created_at
+# favourites_count
+# utc_offset
+# time_zone
+# geo_enabled
+# verified
+# lang
+# contributors_enabled
+# is_translator
+# profile_background_color
+# profile_background_image_url
+# profile_background_image_url_https
+# profile_background_tile
+# profile_image_url
+# profile_image_url_https
+# profile_link_color
+# profile_sidebar_border_color
+# profile_sidebar_fill_color
+# profile_text_color
+# profile_use_background_image
+# default_profile
+# default_profile_image
+# following
+# follow_request_sent
+# notifications
