@@ -14,6 +14,11 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'jquery-rails'
 
+gem 'simple_form'
+gem 'countries'
+gem 'country_select'
+gem 'factual-api'
+
 group :production do
   gem 'thin'
 end

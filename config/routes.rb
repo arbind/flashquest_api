@@ -1,6 +1,13 @@
 FlashquestApi::Application.routes.draw do
 
-  get "home/index"
+  root 'home#index'
+
+  namespace :admin do
+    resources :factual, only: [:index]
+    resources :setup, only: [:index]
+    resources :quest_description
+    resources :reward_description
+  end
 
   namespace :api do namespace :v1 do
     resources :devices,         only: [:create], defaults: { format: 'json' }
