@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :null_session
 
+  def ping
+    render json: :pong
+  end
+
   def render *args
     calculate_action_time
     super
