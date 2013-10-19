@@ -6,6 +6,7 @@ class Admin::FactualController < Admin::AdminController
 
   private
   def set_query
-    @query = FactualQuery.new params[:search]
+    query_params = params[:search] || {}
+    @query = FactualQuery.new query_params
   end
 end
