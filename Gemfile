@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
+
 ruby "2.0.0"
 gem 'rails', '4.0.0.rc1'
+gem 'rails_12factor', group: :production # heroku support for rails 4
+
 gem 'mongoid', github: 'mongoid/mongoid'
 gem 'bson_ext'
 gem 'jbuilder', '~> 1.0.1'
