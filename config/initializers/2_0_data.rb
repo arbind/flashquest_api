@@ -6,4 +6,4 @@ def _bootstrap
   flash_quest_branch = flash_quest.branches.where(name: FLASHQUEST_BRANCH_NAME).first_or_create
 end
 
-_bootstrap
+_bootstrap if ENV["IN_SERVER"]
