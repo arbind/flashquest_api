@@ -1,1 +1,13 @@
-%h1 quest descriptions
+%h1 #{@branch.name} Quest Descriptions
+
+- @quest_descriptions.each do |qd|
+  .quest-description
+    .name= qd.name
+    .active= qd.active
+    .type= qd.type
+    .description= qd.description
+    .points= qd.points
+    .approvals-required-for-points= qd.approvals_required_for_points
+    %a{href: edit_admin_business_branch_quest_description_path(@biz, @branch, qd) } edit
+
+%a{href: new_admin_business_branch_quest_description_path(@biz, @branch) } add

@@ -1,0 +1,7 @@
+= f.input :active, as: :radio, selected: 'Yes'
+= f.input :type, as: :hidden
+= f.input :name, label: false, placeholder: :title
+= f.input :description, label: false, as: :text, placeholder: :description
+= f.input :points, as: :numeric
+= f.input :approvals_required_for_points, label: 'Approvals Required', disabled: true, as: :numeric
+= f.submit 'Save'
