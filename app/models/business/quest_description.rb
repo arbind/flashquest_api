@@ -2,7 +2,7 @@ class QuestDescription
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :active, type: Boolean
+  field :active, type: Boolean, default: true
   field :type, type: Symbol, default: :quest
   field :name, type: String
   field :description, type: String
