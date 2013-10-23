@@ -1,11 +1,9 @@
-%h1 search
-
 %section.query
   = simple_form_for :search, method: :GET do |f|
     = f.input :country, selected: @query.country, priority: ['United States', 'China', 'Hong Kong', 'Thailand'], required: false, label: false
     = f.input :term, input_html: { value: @query.term }, required: false, label: false, placeholder: 'search term'
     = f.input :location, input_html: { value: @query.location }, required: false, label: false, placeholder: 'location'
-    = f.submit
+    = f.submit 'search'
 %section.results
   %h2
     - if @query.count.eql? 0
