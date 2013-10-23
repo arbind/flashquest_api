@@ -42,6 +42,11 @@ class FactualQuery
     # +++
   end
 
+  def count
+    return -1 unless @scope
+    @scope.total_count
+  end
+
   def results
     if @scope
       @results = @scope.rows

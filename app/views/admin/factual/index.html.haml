@@ -7,6 +7,13 @@
     = f.input :location, input_html: { value: @query.location }, required: false, label: false, placeholder: 'location'
     = f.submit
 %section.results
+  %h2
+    - if @query.count.eql? 0
+      No
+    Results Found
+    - if @query.count > 1
+      (#{@query.count} Total)
+
   - @query.results.each do |result|
     .vcard
       %h3.name= result['name']
