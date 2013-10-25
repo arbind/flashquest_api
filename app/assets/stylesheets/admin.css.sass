@@ -1,5 +1,17 @@
 a
   text-decoration: none
+  padding: 4px 8px
+  font-family: 'GothamBoldRegular'
+  color: #15394a
+  background-color: transparent
+  &:hover
+    color: #f53b70
+    background-color: transparent
+
+a.add
+  color: green
+  &:hover
+    color: #f53b70
 
 h1, h2, h3
   text-align: center
@@ -18,42 +30,136 @@ h3
     div
       display: inline-block
 
-input[type="text"], select
-  background-color: white
-  border: 1px solid #cccccc
-  display: inline-block
-  height: 30px
-  padding: 4px 6px
-  margin-bottom: 10px
-  font-size: 14px
-  line-height: 24px
-  color: #555555
-  vertical-align: middle
-  width: 200px
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
-  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s
-  -moz-transition: border linear 0.2s, box-shadow linear 0.2s
-  -o-transition: border linear 0.2s, box-shadow linear 0.2s
-  transition: border linear 0.2s, box-shadow linear 0.2
+.center
+  margin: auto
+  text-align: center
 
-input[type="submit"]
-  background-color: transparent
-  border: 0
+form, .card
+  position: relative
+  margin: auto
+  text-align: left
+  h1
+    padding-left: 140px
+  background-color: rgba(255,255,255,0.3) 
+  border: 2px solid #15394a
+  -webkit-border-radius: 8px
+  -moz-border-radius: 8px
+  border-radius: 8px
+
+  padding: 20px 70px 10px 10
   display: inline-block
-  height: 30px
-  width: 100px
-  padding: 4px 6px
-  margin-bottom: 10px
-  font-size: 14px
-  line-height: 24px
-  color: #666
-  font-family: GothamBoldRegular
-  &:hover
+
+  textarea
+    width: 300px
+
+  input[type="text"], select
+    height: 30px
+    width: 300px
+
+  input[type="radio"]
+
+  input[type="number"]
+    height: 30px
+    width: 80px
+
+  input[type="text"], input[type="number"], select, textarea
+    background-color: white
+    border: 1px solid #cccccc
+    display: inline-block
+    padding: 4px 6px
+    margin-bottom: 10px
+    font-size: 18px
+    line-height: 24px
+    color: #555555
+    vertical-align: middle
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075)
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s
+    -o-transition: border linear 0.2s, box-shadow linear 0.2s
+    transition: border linear 0.2s, box-shadow linear 0.2
+
+  input[type="submit"], a
+    float: right
+    background-color: #eee
+    line-height: 24px
+    display: inline-block
+    padding: 7px 12px 5px 12px
+    margin: 4px 0 10px 20px
+    font-family: GothamBoldRegular
+    border: 1px solid #666
+    -webkit-border-radius: 6px
+    -moz-border-radius: 6px
+    border-radius: 6px
+
+  input[type="submit"]
     color: #f53b70
+    font-size: 18px
+    margin-left: 60px
+    &:hover
+      background-color: #eee
 
+  a
+    color: #666
+    font-size: 14px
+    &:hover
+      color: #f53b70
+      background-color: transparent
+
+  .input
+    label 
+      font-size: 18px
+      line-height: 24px
+    label.collection_radio
+      margin: 0 12px 12px 2px
+    label.string, label.text, label.numeric, label.radio
+      display: inline-block
+      min-width: 250px
+      text-align: right
+      margin: 0 12px 12px 0
+      font-weight: bold
+  
+.card
+  padding: 12px 60px 12px 80px
+  margin: 40px
+  a.delete
+    position: absolute
+    top: -28px
+    right: -24px
+    z-index: 1
+    font-size: 14px
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+    border: 2px solid transparent
+    color: #999
+    background-color: transparent
+    &:hover
+      color: #f53b70
+      background-color: #eee
+      border-color: #f53b70
+
+  a.points
+    padding: 6px 14px
+    position: absolute
+    top: 6px
+    left: -8px
+    z-index: 1
+    font-size: 14px
+    font-weight: bold
+    -webkit-border-radius: 50%
+    -moz-border-radius: 50%
+    border-radius: 50%
+    border: 2px solid transparent
+    background-color: #eee
+    border-color: #15394a
+    &:hover
+      color: #f53b70
+      border-color: #f53b70
+
+  
 body
   padding: 0
   margin: 0
@@ -82,22 +188,27 @@ body
         list-style: none
         a
           padding: 15px 20px
-          font-family: 'GothamBoldRegular'
           font-size: 1.5em
-          color: #15394a
-          background-color: transparent
-          &:hover
-            color: #f53b70
-            background-color: transparent
   .content
     margin: 10px 35px
 
-  .vcard
-    display: block
-    text-align: left
-    background-color: white
-    margin: 8px 0
-    padding: 8px
-    -webkit-border-radius: 12px
-    -moz-border-radius: 12px
-    border-radius: 12px
+
+.quest-description
+  .inactive
+    font-size: 18px
+    color: orange
+    font-weight: bold
+  .active
+    font-size: 18px
+    color: green
+    font-weight: bold
+
+.vcard
+  display: block
+  text-align: left
+  background-color: white
+  margin: 8px 0
+  padding: 8px
+  -webkit-border-radius: 12px
+  -moz-border-radius: 12px
+  border-radius: 12px

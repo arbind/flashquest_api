@@ -1,0 +1,14 @@
+%h1 #{@branch.name} Quest Descriptions
+
+%h2
+  Photo Quests
+  %a{class: :add, href: new_admin_business_branch_quest_description_path(@biz, @branch, quest_type: :photo) } +
+%hr
+= render @photo_quest_descriptions
+
+%h2
+  Comment Quests
+  %a{class: :add, href: new_admin_business_branch_quest_description_path(@biz, @branch, quest_type: :comment) } +
+%hr
+= render @comment_quest_descriptions
+

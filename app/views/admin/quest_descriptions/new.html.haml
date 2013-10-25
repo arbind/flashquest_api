@@ -1,0 +1,4 @@
+.center
+  = simple_form_for @quest_description, url: admin_business_branch_quest_descriptions_path(@biz, @branch) do |f|
+    %h1 Define a new #{@quest_type.to_s.capitalize} Quest
+    =render 'form', f: f, quest_type: @quest_type

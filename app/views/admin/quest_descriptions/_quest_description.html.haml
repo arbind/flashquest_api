@@ -1,0 +1,12 @@
+- qd = quest_description
+.quest-description.card
+  %a{class: :points, href: edit_admin_business_branch_quest_description_path(@biz, @branch, qd) }= qd.points
+  .name= qd.name
+  / .type= qd.type
+  .description= qd.description
+  %hr
+  - if 'true'.eql? qd.active.to_s.downcase
+    .active Active
+  - else 
+    .inactive Inactive
+  = link_to 'x', admin_business_branch_quest_description_path(@biz, @branch, qd), confirm: "Delete #{qd.name}?", method: :delete, class: :delete

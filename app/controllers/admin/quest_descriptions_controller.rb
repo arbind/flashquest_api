@@ -1,10 +1,11 @@
-class Admin::QuestDescriptionController < Admin::AdminController
+class Admin::QuestDescriptionsController < Admin::AdminController
   before_action :set_context
 
   def index
   end
 
   def new
+    @quest_type =  params[:quest_type] || :photo
     @quest_description = @flash_quest_branch.quest_descriptions.build
   end
 
@@ -22,12 +23,18 @@ class Admin::QuestDescriptionController < Admin::AdminController
     redirect_to action: :index
   end
 
+  def destroy
+    @branch.quest_descriptions.find(params[:id]).delete
+    redirect_to action: :index
+  end
+
   private
 
   def set_context
     @biz = Business.find(params[:business_id])
     @branch = @biz.branches.find(params[:branch_id])
-    @quest_descriptions = @branch.quest_descriptions
+    @photo_quest_descriptions = @branch.quest_descriptions.photo
+    @comment_quest_descriptions = @branch.quest_descriptions.comment
     @quest_description = @branch.quest_descriptions.find(params[:id]) if params[:id]
   end
 

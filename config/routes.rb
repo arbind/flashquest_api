@@ -9,8 +9,8 @@ FlashquestApi::Application.routes.draw do
     resources :setup, only: [:index]
     resources :businesses do
       resources :branches do
-        resources :quest_description
-        resources :reward_description
+        resources :quest_descriptions
+        resources :reward_descriptions
       end
     end
 

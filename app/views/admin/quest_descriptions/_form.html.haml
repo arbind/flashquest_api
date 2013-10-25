@@ -1,0 +1,9 @@
+- quest_type ||= :photo
+= f.input :points, as: :numeric, input_html: { min: 1 }
+= f.hidden_field :type, value: quest_type
+= f.input :name, label: :Title, placeholder: :title
+= f.input :description, as: :text, placeholder: :description, input_html: {rows: 3, cols: 50}
+= f.input :active, as: :radio, selected: 'Yes'
+/ = f.input :approvals_required_for_points, label: 'Approvals Required', disabled: true, as: :numeric, input_html: { min: 0 }
+= f.submit 'Save'
+= link_to :Cancel, :back

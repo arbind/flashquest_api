@@ -16,6 +16,7 @@ class QuestDescription
 
   scope :photo, where(type: :photo)
   scope :review, where(type: :review)
+  scope :comment, where(type: :comment)
   scope :facebook_like, where(type: :facebook_like)
   scope :twitter_follow, where(type: :twitter_follow)
 
