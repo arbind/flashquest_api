@@ -2,10 +2,12 @@ json.id branch.id.to_s
 
 json.business_id branch.business.id.to_s
 
-json.name branch.name || branch.business.name
-json.type branch.type || branch.business.type
-json.url branch.url   || branch.business.url
-json.url branch.phone || branch.business.phone
+json.name branch.name   || branch.business.name
+json.type branch.type   || branch.business.type
+json.phone branch.phone || branch.business.phone
+json.url branch.url     || branch.business.url
+json.facebook_url branch.facebook_url   || branch.business.facebook_url
+json.twitter_url branch.twitter_url     || branch.business.twitter_url
 
 @person = @patron.person if @patron and @person.nil?
 @patron = branch.patrons.where(person_id: @person.id).first if @person and @patron.nil?

@@ -7,6 +7,9 @@ class Branch
   field :url, type: String
   field :phone, type: String
 
+  field :twitter_url, type: String
+  field :facebook_url, type: String
+
   field :address, type: String
   field :address2, type: String
   field :city, type: String
@@ -14,12 +17,18 @@ class Branch
   field :zip, type: Integer
   field :neighborhood, type: String
 
+  field :hidden, type: Boolean
+
   embeds_many :quest_descriptions
   embeds_many :reward_descriptions
 
   has_many :patrons
 
   belongs_to :business
+
+  default_scope excludes(hidden: true) # skip hidden branches
+  scope :private, where(hidden: true)
+  scope :public, excludes(hidden: true)
 
   before_save :validate_quests
 
