@@ -3,7 +3,7 @@ module JsonResponseHelpers
     let (:json)       { JSON.parse response.body }
     let (:json_meta)  { json['meta']}
     let (:json_data)  { json['data']}
-    let (:json_error) { json_meta['error'] }
+    let (:json_errors) { json['errors'] }
   end
 
   shared_examples_for "a json item" do |name|

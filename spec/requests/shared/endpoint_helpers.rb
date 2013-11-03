@@ -38,7 +38,7 @@ module EndpointHelpers
         expect(response.status).not_to eq 401
       end
       it 'response has no errors' do
-        expect(json_error).to be_nil
+        expect(json_errors).to be_blank
       end
     end
     context 'without an access token' do
@@ -51,7 +51,7 @@ module EndpointHelpers
         expect(response.status).to eq 401
       end
       it 'responds with an error' do
-        expect(json_error).to match /unauthorized/i
+        expect(json_errors.first).to match /unauthorized/i
       end
     end
     context 'without an access token' do
@@ -69,7 +69,7 @@ module EndpointHelpers
         expect(response.status).to eq 401
       end
       it 'responds with an error' do
-        expect(json_error).to match /unauthorized/i
+        expect(json_errors.first).to match /unauthorized/i
       end
     end
   end
