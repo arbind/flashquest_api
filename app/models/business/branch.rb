@@ -27,9 +27,7 @@ class Branch
   belongs_to :business
 
   default_scope excludes(hidden: true) # skip hidden branches
-  scope :private, where(hidden: true)
-  scope :public, excludes(hidden: true)
-
+  
   before_save :validate_quests
 
   def make_customer(person) person.patronize(self) end

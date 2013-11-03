@@ -15,8 +15,6 @@ class Business
   has_many :branches
 
   default_scope excludes(hidden: true) # skip hidden branches
-  scope :private, where(hidden: true)
-  scope :public, excludes(hidden: true)
 
   def quests
     Quest.in patron_id: patron_ids
