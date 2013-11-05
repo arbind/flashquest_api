@@ -1,6 +1,7 @@
 namespace :db do
   desc "Seed the DB"
   task :mvp => :environment do
+    p 'Setting up data for MVP'
     biz = Business.where(name: "Liang's Village Cuisine",  type: 'Chinese',  url: 'http://www.liangskitchen.com',  phone: '(408) 725-9999').first_or_create
     branch = biz.branches.where(name: "Liang's Village Cuisine",  type: "Chinese",
                                 url: "http://www.liangskitchen.com",
