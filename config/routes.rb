@@ -8,7 +8,7 @@ FlashquestApi::Application.routes.draw do
 
   namespace :admin do
     resources :factual, only: [:index]
-    resources :setup, only: [:index, :new, :edit, :create, :update]
+    resources :setup, only: [:index, :new, :edit, :create, :update, :destroy]
     resources :businesses do
       resources :branches do
         resources :quest_descriptions

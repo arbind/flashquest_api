@@ -5,3 +5,4 @@
 - @branches.each do |branch|
   .branch
     %a{href: edit_admin_setup_path(branch) } Setup #{branch.name}
+    =link_to 'x', admin_setup_path(branch), :method => :delete, :data => { :confirm => "Delete #{branch.name}\nAre you sure?" }
