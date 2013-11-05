@@ -6,7 +6,7 @@ class Admin::QuestDescriptionsController < Admin::AdminController
 
   def new
     @quest_type =  params[:quest_type] || :photo
-    @quest_description = @flash_quest_branch.quest_descriptions.build
+    @quest_description = @branch.quest_descriptions.build
   end
 
   def edit
@@ -14,7 +14,7 @@ class Admin::QuestDescriptionsController < Admin::AdminController
   end
 
   def create
-    @quest_description = @flash_quest_branch.quest_descriptions.create! quest_description_params
+    @quest_description = @branch.quest_descriptions.create! quest_description_params
     redirect_to action: :index
   end
 
@@ -31,8 +31,8 @@ class Admin::QuestDescriptionsController < Admin::AdminController
   private
 
   def set_context
-    @biz = Business.find(params[:business_id])
-    @branch = @biz.branches.find(params[:branch_id])
+    @biz = Business.unscoped.find(params[:business_id])
+    @branch = @biz.branches.unscoped.find(params[:branch_id])
     @photo_quest_descriptions = @branch.quest_descriptions.photo
     @comment_quest_descriptions = @branch.quest_descriptions.comment
     @quest_description = @branch.quest_descriptions.find(params[:id]) if params[:id]
