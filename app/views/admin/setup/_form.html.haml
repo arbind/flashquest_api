@@ -1,0 +1,22 @@
+= simple_form_for @branch, url: url, method: method do |f|
+  - if @branch.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@branch.errors.count, "error")} prohibited this sample from being saved:"
+      %ul
+        - @branch.errors.full_messages.each do |msg|
+          %li= msg
+  =f.input :name
+  =f.input :url
+  =f.input :phone
+  =f.input :twitter_url
+  =f.input :facebook_url
+  =f.input :address
+  =f.input :address2
+  =f.input :city
+  =f.input :state
+  =f.input :zip
+  =f.input :neighborhood
+
+  .actions
+    = f.submit 'Save'
+%hr

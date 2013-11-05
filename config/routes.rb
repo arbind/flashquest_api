@@ -1,12 +1,14 @@
 FlashquestApi::Application.routes.draw do
 
+  resources :samples
+
   root 'home#index'
 
   get '/ping' => 'application#ping'
 
   namespace :admin do
     resources :factual, only: [:index]
-    resources :setup, only: [:index]
+    resources :setup, only: [:index, :new, :edit, :create, :update]
     resources :businesses do
       resources :branches do
         resources :quest_descriptions

@@ -1,3 +1,7 @@
-%h1 setup
-
-%a{href: admin_business_branch_quest_descriptions_path(@flash_quest_biz, @flash_quest_branch) } Quest Descriptions
+%h1
+  setup branches
+  %a{class: :add, href: new_admin_setup_path } +
+%hr
+- @branches.each do |branch|
+  .branch
+    %a{href: edit_admin_setup_path(branch) } Setup #{branch.name}
