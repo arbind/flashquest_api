@@ -1,6 +1,3 @@
-%h1 New sample
-
-= render 'form', url: admin_setup_index_path(@branch), method: :post
-
-%hr
-= link_to 'Back', samples_path
+.center
+  %h1 New Branch
+  = render 'form', url: admin_setup_index_path(@branch)

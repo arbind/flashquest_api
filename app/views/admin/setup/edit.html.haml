@@ -1,7 +1,3 @@
-%h1 Editing Branch
-
-= render 'form', url: admin_setup_path(@branch), method: :put
-
-%a{href: admin_business_branch_quest_descriptions_path(@branch.business_id, @branch) } Setup #{@branch.name}
-
-= link_to 'cancel', admin_setup_index_path
+.center
+  %h1 Editing Branch
+  = render 'form', url: admin_setup_path(@branch), method: :put

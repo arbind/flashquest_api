@@ -4,5 +4,6 @@
 %hr
 - @branches.each do |branch|
   .branch
-    %a{href: edit_admin_setup_path(branch) } Setup #{branch.name}
+    %a{href: admin_business_branch_quest_descriptions_path(branch.business_id, branch) } Setup
+    %a{href: edit_admin_setup_path(branch) } #{branch.name}
     =link_to 'x', admin_setup_path(branch), :method => :delete, :data => { :confirm => "Delete #{branch.name}\nAre you sure?" }
