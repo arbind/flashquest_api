@@ -8,20 +8,22 @@ json.status quest.status
 json.num_approvals quest.approvals.count
 json.num_comments quest.comments.count
 
-branch = quest.patron.branch
-json.branch do
-  json.id branch.id.to_s
-  json.extract! branch, :name, :phone, :address, :address2, :city, :state, :zip
+if quest.patron and quest.patron.branch
+  branch = quest.patron.branch
+  json.branch do
+    json.id branch.id.to_s
+    json.extract! branch, :name, :phone, :address, :address2, :city, :state, :zip
+  end
+
+  quest_description = branch.quest_descriptions.find(quest.quest_description_id)
+
+  json.extract! quest_description, :active, :type, :name, :description, :points, :bonus_approval_points, :bonus_sharing_points, :approvals_required_for_points, :approvals_required_for_bonus
 end
-
-quest_description = branch.quest_descriptions.find(quest.quest_description_id)
-
-json.extract! quest_description, :active, :type, :name, :description, :points, :bonus_approval_points, :bonus_sharing_points, :approvals_required_for_points, :approvals_required_for_bonus
 
 json.person do
   json.id quest.patron.person.id.to_s
   json.extract! quest.patron.person, :nickname, :avatar
-end
+end if quest.patron and quest.patron.person
 
 json.review do
   json.extract! quest.review, :rating, :headline, :text, :photo_url
