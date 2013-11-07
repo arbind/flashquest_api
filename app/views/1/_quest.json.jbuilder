@@ -1,15 +1,15 @@
 json.id  quest.id.to_s
 
 patron = quest.patron
-json.patron_id  quest.patron.id.to_s
+json.patron_id  patron.id.to_s
 json.business_id  patron.branch.business.id.to_s if patron.branch and patron.branch.business
 
 json.status quest.status
 json.num_approvals quest.approvals.count
 json.num_comments quest.comments.count
 
-if quest.patron and quest.patron.branch
-  branch = quest.patron.branch
+if patron and patron.branch
+  branch = patron.branch
   json.branch do
     json.id branch.id.to_s
     json.extract! branch, :name, :phone, :address, :address2, :city, :state, :zip
@@ -20,10 +20,11 @@ if quest.patron and quest.patron.branch
   json.extract! quest_description, :active, :type, :name, :description, :points, :bonus_approval_points, :bonus_sharing_points, :approvals_required_for_points, :approvals_required_for_bonus
 end
 
+person = patron.person if patron
 json.person do
-  json.id quest.patron.person.id.to_s
-  json.extract! quest.patron.person, :nickname, :avatar
-end if quest.patron and quest.patron.person
+  json.id person.id.to_s
+  json.extract! person, :nickname, :avatar
+end if person
 
 json.review do
   json.extract! quest.review, :rating, :headline, :text, :photo_url
