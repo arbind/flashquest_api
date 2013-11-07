@@ -1,9 +1,7 @@
 json.id  quest.id.to_s
 
 patron = quest.patron
-json.patron_id  quest.patron.id.to_s if quest.patron
-json.person_id    patron.person.id.to_s   if patron.person
-json.branch_id    patron.branch.id.to_s   if patron.branch
+json.patron_id  quest.patron.id.to_s
 json.business_id  patron.branch.business.id.to_s if patron.branch and patron.branch.business
 
 json.status quest.status
@@ -12,6 +10,7 @@ json.num_comments quest.comments.count
 
 branch = quest.patron.branch
 json.branch do
+  json.id branch.id.to_s
   json.extract! branch, :name, :phone, :address, :address2, :city, :state, :zip
 end
 
@@ -20,14 +19,13 @@ quest_description = branch.quest_descriptions.find(quest.quest_description_id)
 json.extract! quest_description, :active, :type, :name, :description, :points, :bonus_approval_points, :bonus_sharing_points, :approvals_required_for_points, :approvals_required_for_bonus
 
 json.person do
+  json.id quest.patron.person.id.to_s
   json.extract! quest.patron.person, :nickname, :avatar
 end
 
-if quest.review.present?
-  json.review do
-    json.extract! quest.review, :rating, :headline, :text, :photo_url
-  end
-end
+json.review do
+  json.extract! quest.review, :rating, :headline, :text, :photo_url
+end if quest.review
 
 json.comments  { json.partial! '1/comments', items: quest.comments }
 
