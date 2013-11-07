@@ -11,9 +11,17 @@ json.num_approvals quest.approvals.count
 json.num_comments quest.comments.count
 
 branch = quest.patron.branch
+json.branch do
+  json.extract! branch, :name, :phone, :address, :address2, :city, :state, :zip
+end
+
 quest_description = branch.quest_descriptions.find(quest.quest_description_id)
 
 json.extract! quest_description, :active, :type, :name, :description, :points, :bonus_approval_points, :bonus_sharing_points, :approvals_required_for_points, :approvals_required_for_bonus
+
+json.person do
+  json.extract! quest.patron.person, :nickname, :avatar
+end
 
 if quest.review.present?
   json.review do
