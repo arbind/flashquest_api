@@ -14,6 +14,19 @@ class Person
   has_many :approvals
   has_many :activities
 
+  def nickname
+    @nickname ||= name
+    @nickname ||= "@#{twitter['screen_name']}" if twitter
+    @nickname ||= facebook['username'] if facebook
+    @nickname ||= facebook['name'] if facebook
+    @nickname ||= twitter['name'] if twitter
+  end
+
+  def avatar
+    @avatar ||= facebook['avatar'] if facebook
+    @avatar ||= twitter['avatar'] if twitter
+  end
+
   def points_at_business(business)
     points = 0
     business.branches.each do |branch|
