@@ -46,6 +46,7 @@ class Api::V1::QuestsController < Api::V1::ApplicationController
     @quests  = @context.quests if @context
     @quests ||= Quest.all
     @quests  = @quests.where(type: params[:type].to_sym) if params[:type]
+    @quests  = @quests.order_by(:created_at.desc)
   end
 
   def set_quest
