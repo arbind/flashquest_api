@@ -11,3 +11,15 @@
   %a{class: :add, href: new_admin_business_branch_quest_description_path(@biz, @branch, quest_type: :comment) } +
 %hr
 = render @comment_quest_descriptions
+
+%h2
+  Twitter Quests
+  %a{class: :add, href: new_admin_business_branch_quest_description_path(@biz, @branch, quest_type: :twitter_follow) } +
+%hr
+= render @twitter_follow_quest_descriptions
+
+%h2
+  Facebook Quests
+  %a{class: :add, href: new_admin_business_branch_quest_description_path(@biz, @branch, quest_type: :facebook_like) } +
+%hr
+= render @facebook_like_quest_descriptions

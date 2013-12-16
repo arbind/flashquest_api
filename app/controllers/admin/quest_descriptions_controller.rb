@@ -35,6 +35,8 @@ class Admin::QuestDescriptionsController < Admin::AdminController
     @branch = @biz.branches.unscoped.find(params[:branch_id])
     @photo_quest_descriptions = @branch.quest_descriptions.photo
     @comment_quest_descriptions = @branch.quest_descriptions.comment
+    @twitter_follow_quest_descriptions = @branch.quest_descriptions.twitter_follow
+    @facebook_like_quest_descriptions = @branch.quest_descriptions.facebook_like
     @quest_description = @branch.quest_descriptions.find(params[:id]) if params[:id]
   end
 
