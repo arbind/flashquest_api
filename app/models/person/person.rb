@@ -16,10 +16,10 @@ class Person
 
   def nickname
     @nickname ||= name
-    @nickname ||= "@#{twitter['screen_name']}" if twitter
-    @nickname ||= facebook['username'] if facebook
     @nickname ||= facebook['name'] if facebook
     @nickname ||= twitter['name'] if twitter
+    @nickname ||= "@#{twitter['screen_name']}" if twitter
+    @nickname ||= facebook['username'] if facebook
   end
 
   def avatar
