@@ -20,11 +20,13 @@ class Person
     @nickname ||= twitter['name'] if twitter
     @nickname ||= "@#{twitter['screen_name']}" if twitter
     @nickname ||= facebook['username'] if facebook
+    @nickname
   end
 
   def avatar
     @avatar ||= facebook['avatar'] if facebook
     @avatar ||= twitter['avatar'] if twitter
+    @avatar
   end
 
   def points_at_business(business)
